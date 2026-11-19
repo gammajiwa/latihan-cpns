@@ -11,7 +11,11 @@ Web app latihan soal CPNS yang bisa dibuka di HP maupun laptop, dipasang seperti
 | **SKD** (tahap 1) | TWK, TIU, TKP. Simulasi 110 soal / 100 menit dengan skor dan passing grade ala CAT BKN, latihan per materi, soal hitungan dan figural TIU yang angkanya acak tiap main. |
 | **SKB Analis Lab** (tahap 2) | Jabatan Pranata Laboratorium Kesehatan. Materi mengikuti materi pokok resmi SKB CAT (Surat Menteri PANRB B/5457/M.SM.01.00/2024), rapor per bidang, soal hitungan lab acak. |
 
-Fitur di kedua tes: mode belajar (pembahasan langsung), ulangi soal yang pernah salah, riwayat nilai, contekan materi, tips belajar, versi cetak PDF.
+Fitur di kedua tes:
+- **Belajar**: baca soal per materi lengkap dengan jawaban dan pembahasan, bisa “tutup jawaban” buat tes diri, progres tiap materi.
+- **Latihan**: simulasi bertimer, mode belajar, ulangi soal yang pernah salah, riwayat nilai.
+- **Ringkasan** materi dan **Tips** belajar lengkap (rencana belajar, trik per materi, contoh pengerjaan).
+- Mode terang (default), gelap, atau otomatis. Navigasi bawah ala aplikasi di HP. Versi cetak PDF.
 
 Semua soal adalah soal latihan yang disusun mengikuti kisi-kisi resmi, bukan bocoran soal CAT BKN.
 
