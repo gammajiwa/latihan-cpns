@@ -9,14 +9,18 @@
   --f-num:"Cascadia Mono",Consolas,"Roboto Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root{
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+    --bg:#0f141b; --surface:#171e28; --surface-2:#1d2632; --ink:#e6ebf1; --muted:#9ba6b5; --line:#2b3543;
+    --accent:#e46470; --accent-soft:#3b1d23; --on-accent:#1b0b0e;
+    --ok:#55c890; --ok-soft:#133022; --warn:#e5ad50; --warn-soft:#352812; --bad:#f17b73; --bad-soft:#3b1a18;
+    color-scheme:dark;
+  }}
+:root[data-theme="dark"]{
     --bg:#0f141b; --surface:#171e28; --surface-2:#1d2632; --ink:#e6ebf1; --muted:#9ba6b5; --line:#2b3543;
     --accent:#e46470; --accent-soft:#3b1d23; --on-accent:#1b0b0e;
     --ok:#55c890; --ok-soft:#133022; --warn:#e5ad50; --warn-soft:#352812; --bad:#f17b73; --bad-soft:#3b1a18;
     color-scheme:dark;
   }
-}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
@@ -160,8 +164,7 @@ body.printmode .top,body.printmode .noprint{display:none!important}
   .qtext.big{font-size:24px}
   .timer{font-size:16px}
 }
-@media print{
-  :root{--bg:#fff;--surface:#fff;--surface-2:#f3f4f6;--ink:#111;--muted:#444;--line:#ccc;--accent:#a01d2a;--accent-soft:#f7e4e6;color-scheme:light}
+@media print{:root:root:root{--bg:#fff;--surface:#fff;--surface-2:#f3f4f6;--ink:#111;--muted:#444;--line:#ccc;--accent:#a01d2a;--accent-soft:#f7e4e6;color-scheme:light}
   @page{margin:14mm}
   body{font-size:11pt;background:#fff}
   .top,.noprint,.qnav{display:none!important}

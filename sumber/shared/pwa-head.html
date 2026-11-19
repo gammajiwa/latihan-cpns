@@ -9,3 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Latihan CPNS">
 <script>if ("serviceWorker" in navigator && location.protocol === "https:") addEventListener("load", function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); });</script>
+<script>(function(){var K="tema",R=document.documentElement,N={auto:"Otomatis",light:"Terang",dark:"Gelap"};
+function g(){try{return localStorage.getItem(K)||"auto"}catch(e){return"auto"}}
+function a(t){if(t==="light"||t==="dark")R.setAttribute("data-theme",t);else R.removeAttribute("data-theme");var b=document.getElementById("b-tema");if(b){b.setAttribute("data-mode",t);b.setAttribute("aria-label","Tema: "+N[t]+". Ketuk untuk ganti");var l=b.querySelector(".tl");if(l)l.textContent=N[t]}}
+a(g());document.addEventListener("DOMContentLoaded",function(){a(g());var b=document.getElementById("b-tema");if(b)b.addEventListener("click",function(){var n={auto:"light",light:"dark",dark:"auto"}[g()]||"auto";try{localStorage.setItem(K,n)}catch(e){}a(n)})})})();</script>
