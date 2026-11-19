@@ -1,5 +1,5 @@
 /* Service worker: ambil versi terbaru kalau online, pakai cache kalau offline. */
-const CACHE = "latihan-cpns-202611191525";
+const CACHE = "latihan-cpns-202611191540";
 const FILES = ["./", "index.html", "skd.html", "skb.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png", "font/plus-jakarta-sans-latin.woff2", "font/plus-jakarta-sans-latin-ext.woff2"];
 
 self.addEventListener("install", e => {
