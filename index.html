@@ -281,6 +281,68 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .cols > *, .secgrid > *, .tgrid > *, .langkah > *, .pilih > *{min-width:0}
 @media (max-width:600px){ .cols{grid-template-columns:minmax(0,1fr)} }
 
+/* ==== Lapisan UI aplikasi: font, navigasi bawah, kartu, progres ==== */
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --f-head:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);
+}
+@media (prefers-color-scheme: dark){ :root{ --shadow:0 1px 2px rgba(0,0,0,.35) } }
+body{letter-spacing:-.003em}
+h1,h2,h3{letter-spacing:-.015em}
+
+/* kartu lebih lembut */
+.card,.tcard,.mode,.rv,.opt,.chipbtn{box-shadow:var(--shadow)}
+.card,.rv,.tcard,.mode{border-radius:var(--radius)}
+.opt{border-radius:12px}
+.mode.full{box-shadow:0 6px 18px color-mix(in srgb, var(--accent) 30%, transparent)}
+.btn.primary{box-shadow:0 4px 12px color-mix(in srgb, var(--accent) 28%, transparent)}
+.opt[aria-pressed="true"]{box-shadow:0 0 0 1px var(--accent)}
+
+/* lipatan (details) */
+.lipat summary{cursor:pointer;font-weight:700;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lipat summary::-webkit-details-marker{display:none}
+.lipat summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-right:4px;transition:transform .15s}
+.lipat[open] summary::after{transform:rotate(-135deg)}
+.lipat[open] summary{margin-bottom:10px}
+
+/* ikon tab */
+.tab{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tab svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* progres per materi */
+.tprog{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.tprog i{flex:1;height:6px;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.tprog i b{position:absolute;inset:0 auto 0 0;border-radius:3px}
+
+/* transisi halus antar halaman */
+@media (prefers-reduced-motion: no-preference){
+  main > section:not([hidden]){animation:masuk .18s ease-out}
+  @keyframes masuk{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+
+/* HP: navigasi pindah ke bawah layar, kayak aplikasi */
+@media (max-width:700px){
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;width:auto;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--surface);
+    padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:2px;box-shadow:0 -4px 16px rgba(16,24,40,.07)}
+  .tab{flex:1;flex-direction:column;gap:3px;padding:6px 2px;font-size:11.5px;font-weight:600;border-radius:12px;background:none!important;box-shadow:none!important;color:var(--muted)}
+  .tab svg{width:22px;height:22px}
+  .tab[aria-selected="true"]{color:var(--accent)}
+  .tab[aria-selected="true"] svg{stroke-width:2.4}
+  body.app{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  body.app.in-quiz{padding-bottom:0}
+  body.in-quiz .tabs{display:none}
+  .top-in{padding-block:10px}
+}
+@media print{ .tabs{display:none!important} body.app{padding-bottom:0} }
+/* rapihin: label pakai font utama, tombol navigasi soal tidak patah */
+.chip,.tes .tahap,.grouplbl{font-family:var(--f-body);letter-spacing:.02em;font-weight:700}
+.qnav{grid-template-columns:1fr auto 1.25fr}
+.qnav .btn{white-space:nowrap;padding-inline:14px}
+
 /* ---- Halaman depan ---- */
 .hero{display:flex;flex-direction:column;gap:8px;padding-block:8px 4px}
 .hero h2{font-size:28px;line-height:1.15}
@@ -306,6 +368,12 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .unduh{display:flex;flex-wrap:wrap;gap:8px}
 .unduh a{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}
 .unduh a:hover{border-color:var(--muted)}
+.langkah1{display:flex;flex-direction:column;gap:6px}
+.langkah1 ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.lipat summary{cursor:pointer;font-weight:700;list-style-position:inside}
+.lipat[open] summary{margin-bottom:10px}
+.lipat{display:flex;flex-direction:column;gap:8px}
+.lipat p{margin:0 0 6px}
 .foot{font-size:13px;color:var(--muted);padding-top:8px;border-top:1px solid var(--line)}
 @media (max-width:640px){
   .pilih,.langkah{grid-template-columns:1fr}
@@ -318,59 +386,61 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
   <div class="wrap top-in">
     <div class="brand">
       <img src="icon.svg" width="36" height="36" alt="" style="border-radius:9px">
-      <div><h1>Latihan CPNS</h1><p>Belajar SKD dan SKB kapan saja, langsung dari HP.</p></div>
+      <div><h1>Latihan CPNS</h1><p>SKD dan SKB, kapan saja dari HP</p></div>
     </div>
   </div>
 </header>
 <main class="wrap">
   <section>
     <div class="hero">
-      <h2>Mau latihan tes yang mana?</h2>
-      <p>Pilih tes di bawah. Soalnya diacak setiap main, ada pembahasan di tiap soal, dan soal yang salah otomatis masuk daftar ulangan sampai benar.</p>
+      <h2>Pilih tes</h2>
+      <p>Soal latihan + pembahasan. Bisa dipakai tanpa internet.</p>
     </div>
 
     <div class="pilih">
       <a class="tes skd" href="skd.html">
         <span class="tahap">Tes tahap 1</span>
         <h3>SKD</h3>
-        <p>Seleksi Kompetensi Dasar, wajib untuk semua formasi.</p>
-        <ul><li>TWK: wawasan kebangsaan</li><li>TIU: intelegensia umum</li><li>TKP: karakteristik pribadi</li></ul>
-        <div class="angka"><span><b>302</b>soal tetap</span><span><b>14</b>jenis soal acak</span><span><b>110</b>soal per simulasi</span></div>
-        <span class="mulai">Mulai latihan SKD</span>
+        <p>TWK, TIU, TKP. Untuk semua formasi.</p>
+        <div class="angka"><span><b>302</b>soal</span><span><b>110</b>soal per simulasi</span></div>
+        <span class="mulai">Buka SKD</span>
       </a>
       <a class="tes skb" href="skb.html">
         <span class="tahap">Tes tahap 2</span>
         <h3>SKB Analis Lab</h3>
-        <p>Seleksi Kompetensi Bidang, jabatan Pranata Laboratorium Kesehatan.</p>
-        <ul><li>Hematologi, kimia klinik, mikrobiologi, dll</li><li>Mengikuti materi pokok resmi PANRB 2024</li><li>Hitungan lab dengan angka acak</li></ul>
-        <div class="angka"><span><b>268</b>soal tetap</span><span><b>8</b>jenis soal acak</span><span><b>15</b>bidang</span></div>
-        <span class="mulai">Mulai latihan SKB</span>
+        <p>Pranata Laboratorium Kesehatan.</p>
+        <div class="angka"><span><b>268</b>soal</span><span><b>15</b>bidang</span></div>
+        <span class="mulai">Buka SKB</span>
       </a>
     </div>
 
-    <h3>Cara belajar paling efektif</h3>
-    <div class="langkah">
-      <div class="card"><span class="no">1</span><b>Simulasi dulu</b><span class="muted">Kerjakan satu simulasi lengkap pakai timer buat tahu posisi awal dan materi yang lemah.</span></div>
-      <div class="card"><span class="no">2</span><b>Latihan per materi</b><span class="muted">Nyalakan mode belajar, latih materi paling lemah, baca pembahasan setiap soal.</span></div>
-      <div class="card"><span class="no">3</span><b>Ulangi yang salah</b><span class="muted">Tiap hari buka “Ulangi soal yang pernah salah” sampai daftarnya habis. Cek tab Tips di tiap tes.</span></div>
+    <div class="card langkah1">
+      <b>Cara belajar</b>
+      <ol>
+        <li>Buka tab <b>Belajar</b>, pilih materi, baca soal dan jawabannya.</li>
+        <li>Tekan <b>Latihan 10 soal</b>.</li>
+        <li>Sesekali coba <b>Simulasi</b> di tab <b>Latihan</b>.</li>
+      </ol>
     </div>
 
-    <h3>Pasang di HP biar kayak aplikasi</h3>
-    <div class="cols">
-      <div class="card"><b>Android (Chrome)</b><p class="muted" style="margin-top:6px">Ketuk menu titik tiga di kanan atas, lalu pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.</p></div>
-      <div class="card"><b>iPhone (Safari)</b><p class="muted" style="margin-top:6px">Ketuk tombol <b>Bagikan</b> (kotak dengan panah ke atas), lalu pilih <b>Tambah ke Layar Utama</b>.</p></div>
-    </div>
-    <p class="note">Setelah dibuka sekali, aplikasi tetap bisa dipakai tanpa internet. Progres (riwayat nilai dan daftar soal salah) tersimpan di HP masing-masing, jadi pakai HP dan browser yang sama terus.</p>
+    <details class="card lipat">
+      <summary>Pasang di HP biar kayak aplikasi</summary>
+      <p><b>Android (Chrome):</b> ketuk titik tiga di kanan atas, pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.</p>
+      <p><b>iPhone (Safari):</b> ketuk tombol <b>Bagikan</b>, pilih <b>Tambah ke Layar Utama</b>.</p>
+      <p class="muted">Progres tersimpan di HP itu sendiri, jadi pakai HP yang sama terus.</p>
+    </details>
 
-    <h3>Versi cetak (PDF)</h3>
-    <div class="unduh">
-      <a href="pdf/Bank-Soal-SKD.pdf" target="_blank" rel="noopener">Bank soal SKD + pembahasan</a>
-      <a href="pdf/Contekan-SKD.pdf" target="_blank" rel="noopener">Contekan materi SKD</a>
-      <a href="pdf/Bank-Soal-SKB-Analis-Lab.pdf" target="_blank" rel="noopener">Bank soal SKB + pembahasan</a>
-      <a href="pdf/Contekan-SKB-Analis-Lab.pdf" target="_blank" rel="noopener">Contekan materi SKB</a>
-    </div>
+    <details class="card lipat">
+      <summary>Versi cetak (PDF)</summary>
+      <div class="unduh">
+        <a href="pdf/Bank-Soal-SKD.pdf" target="_blank" rel="noopener">Bank soal SKD</a>
+        <a href="pdf/Contekan-SKD.pdf" target="_blank" rel="noopener">Ringkasan SKD</a>
+        <a href="pdf/Bank-Soal-SKB-Analis-Lab.pdf" target="_blank" rel="noopener">Bank soal SKB</a>
+        <a href="pdf/Contekan-SKB-Analis-Lab.pdf" target="_blank" rel="noopener">Ringkasan SKB</a>
+      </div>
+    </details>
 
-    <p class="foot">Semua soal adalah soal latihan yang disusun mengikuti kisi-kisi dan materi pokok resmi, bukan bocoran soal CAT BKN (soal asli dirahasiakan). Passing grade dan aturan seleksi bisa berubah, selalu cek pengumuman resmi di <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">sscasn.bkn.go.id</a>.</p>
+    <p class="foot">Soal latihan disusun mengikuti kisi-kisi resmi, bukan bocoran. Cek aturan terbaru di <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">sscasn.bkn.go.id</a>.</p>
   </section>
 </main>
 </body>

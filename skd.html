@@ -281,9 +281,71 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .cols > *, .secgrid > *, .tgrid > *, .langkah > *, .pilih > *{min-width:0}
 @media (max-width:600px){ .cols{grid-template-columns:minmax(0,1fr)} }
 
+/* ==== Lapisan UI aplikasi: font, navigasi bawah, kartu, progres ==== */
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --f-head:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);
+}
+@media (prefers-color-scheme: dark){ :root{ --shadow:0 1px 2px rgba(0,0,0,.35) } }
+body{letter-spacing:-.003em}
+h1,h2,h3{letter-spacing:-.015em}
+
+/* kartu lebih lembut */
+.card,.tcard,.mode,.rv,.opt,.chipbtn{box-shadow:var(--shadow)}
+.card,.rv,.tcard,.mode{border-radius:var(--radius)}
+.opt{border-radius:12px}
+.mode.full{box-shadow:0 6px 18px color-mix(in srgb, var(--accent) 30%, transparent)}
+.btn.primary{box-shadow:0 4px 12px color-mix(in srgb, var(--accent) 28%, transparent)}
+.opt[aria-pressed="true"]{box-shadow:0 0 0 1px var(--accent)}
+
+/* lipatan (details) */
+.lipat summary{cursor:pointer;font-weight:700;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lipat summary::-webkit-details-marker{display:none}
+.lipat summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-right:4px;transition:transform .15s}
+.lipat[open] summary::after{transform:rotate(-135deg)}
+.lipat[open] summary{margin-bottom:10px}
+
+/* ikon tab */
+.tab{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tab svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* progres per materi */
+.tprog{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.tprog i{flex:1;height:6px;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.tprog i b{position:absolute;inset:0 auto 0 0;border-radius:3px}
+
+/* transisi halus antar halaman */
+@media (prefers-reduced-motion: no-preference){
+  main > section:not([hidden]){animation:masuk .18s ease-out}
+  @keyframes masuk{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+
+/* HP: navigasi pindah ke bawah layar, kayak aplikasi */
+@media (max-width:700px){
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;width:auto;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--surface);
+    padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:2px;box-shadow:0 -4px 16px rgba(16,24,40,.07)}
+  .tab{flex:1;flex-direction:column;gap:3px;padding:6px 2px;font-size:11.5px;font-weight:600;border-radius:12px;background:none!important;box-shadow:none!important;color:var(--muted)}
+  .tab svg{width:22px;height:22px}
+  .tab[aria-selected="true"]{color:var(--accent)}
+  .tab[aria-selected="true"] svg{stroke-width:2.4}
+  body.app{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  body.app.in-quiz{padding-bottom:0}
+  body.in-quiz .tabs{display:none}
+  .top-in{padding-block:10px}
+}
+@media print{ .tabs{display:none!important} body.app{padding-bottom:0} }
+/* rapihin: label pakai font utama, tombol navigasi soal tidak patah */
+.chip,.tes .tahap,.grouplbl{font-family:var(--f-body);letter-spacing:.02em;font-weight:700}
+.qnav{grid-template-columns:1fr auto 1.25fr}
+.qnav .btn{white-space:nowrap;padding-inline:14px}
+
 </style>
 </head>
-<body>
+<body class="app">
 <header class="top">
   <div class="wrap top-in">
     <div class="brand">
@@ -291,10 +353,10 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
       <div><h1>Latihan SKD CPNS</h1><p><a class="switch" href="./">‹ Ganti tes</a> · TWK, TIU, TKP ala CAT BKN</p></div>
     </div>
     <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" data-tab="belajar" aria-selected="true">Belajar</button>
-      <button class="tab" role="tab" data-tab="latihan" aria-selected="false">Latihan</button>
-      <button class="tab" role="tab" data-tab="contekan" aria-selected="false">Ringkasan</button>
-      <button class="tab" role="tab" data-tab="tips" aria-selected="false">Tips</button>
+      <button class="tab" role="tab" data-tab="belajar" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg><span>Belajar</span></button>
+      <button class="tab" role="tab" data-tab="latihan" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Latihan</span></button>
+      <button class="tab" role="tab" data-tab="contekan" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span>Ringkasan</span></button>
+      <button class="tab" role="tab" data-tab="tips" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg><span>Tips</span></button>
     </nav>
   </div>
 </header>
@@ -302,16 +364,12 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 <main class="wrap">
   <!-- BELAJAR -->
   <section id="v-belajar">
-    <div class="intro">
-      <h2>Belajar per materi</h2>
-      <p>Pilih materi, baca tanya-jawab dan penjelasannya, lalu tekan tombol latihan di bawahnya.</p>
-    </div>
     <div class="card guide">
-      <b>Baru mulai? Ikuti urutan ini:</b>
+      <b>Cara belajar</b>
       <ol>
-        <li>Ketuk salah satu materi di bawah, baca soal, jawaban, dan penjelasannya.</li>
-        <li>Kalau sudah paham, tekan <b>Latihan 10 soal materi ini</b>.</li>
-        <li>Seminggu 2 kali, buka tab <b>Latihan</b> dan coba <b>Simulasi SKD lengkap</b>.</li>
+        <li>Pilih materi di bawah.</li>
+        <li>Baca soal dan jawabannya.</li>
+        <li>Tekan <b>Latihan 10 soal</b>.</li>
       </ol>
     </div>
     <div id="belajar-list"></div>
@@ -320,34 +378,29 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
   <section id="v-topik" hidden>
     <div><button class="btn sm" id="t-back" type="button">‹ Daftar materi</button></div>
     <div class="intro"><span class="chip" id="t-sec" style="align-self:flex-start"></span><h2 id="t-judul"></h2><p class="muted" id="t-info"></p></div>
-    <button class="btn primary big" id="t-latihan" type="button">Latihan 10 soal materi ini</button>
-    <label class="toggle card" for="t-tutup"><input type="checkbox" id="t-tutup"><span><b>Tutup jawaban</b><br><span class="muted">Coba jawab di kepala dulu, lalu ketuk “Lihat jawaban” di tiap soal.</span></span></label>
+    <button class="btn primary big" id="t-latihan" type="button">Latihan 10 soal</button>
+    <label class="toggle card" for="t-tutup"><input type="checkbox" id="t-tutup"><span><b>Tutup jawaban</b> <span class="muted">(buat tes diri sendiri)</span></span></label>
     <div id="t-list" class="tlist"></div>
-    <button class="btn" id="t-more" type="button" hidden>Tampilkan contoh soal lain</button>
-    <button class="btn primary big" id="t-latihan2" type="button">Latihan 10 soal materi ini</button>
+    <button class="btn" id="t-more" type="button" hidden>Contoh soal lain</button>
+    <button class="btn primary big" id="t-latihan2" type="button">Latihan 10 soal</button>
   </section>
 
   <!-- MENU -->
   <section id="v-menu" hidden>
     <div class="intro">
-      <h2>Mau latihan yang mana?</h2>
-      <p>Soal diambil acak dari bank soal, dan soal hitungan TIU dibuat ulang dengan angka baru setiap kali main. Soal yang paling jarang muncul diprioritaskan, jadi tiap simulasi isinya beda.</p>
+      <h2>Simulasi</h2>
+      <p>Soalnya beda tiap kali main.</p>
     </div>
     <div class="modes" id="modes"></div>
     <label class="toggle card" for="opt-belajar">
       <input type="checkbox" id="opt-belajar">
-      <span><b>Mode belajar</b><br><span class="muted">Pembahasan langsung muncul tiap selesai jawab, tanpa timer. Cocok buat latihan per materi. Matikan kalau mau simulasi kayak ujian beneran.</span></span>
+      <span><b>Mode belajar</b> <span class="muted">(langsung lihat pembahasan, tanpa timer)</span></span>
     </label>
-    <div class="card sub">
-      <h3 style="margin-top:0">Latihan per materi</h3>
-      <p class="muted">Mau latihan satu materi saja? Buka tab Belajar, pilih materinya, lalu tekan “Latihan 10 soal materi ini”.</p>
-      <div><button class="btn" id="b-ke-belajar" type="button">Buka tab Belajar</button></div>
-    </div>
     <div class="card sub" id="salah-card">
-      <h3 style="margin-top:0">Ulangi soal yang pernah salah</h3>
+      <h3 style="margin-top:0">Soal yang pernah salah</h3>
       <p class="muted" id="salah-info"></p>
       <div class="row">
-        <button class="btn primary" id="b-salah" type="button">Latihan soal yang salah</button>
+        <button class="btn primary" id="b-salah" type="button">Ulangi soal salah</button>
         <button class="btn" id="b-salah-reset" type="button">Kosongkan daftar</button>
       </div>
       <p class="note" id="salah-confirm" hidden></p>
@@ -356,8 +409,8 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
       <h3 style="margin-top:0">Riwayat skor</h3>
       <div class="tblwrap"><table id="riwayat"></table></div>
     </div>
-    <div class="card">
-      <h3 style="margin-top:0">Passing grade SKD</h3>
+    <details class="card lipat">
+      <summary>Info passing grade SKD</summary>
       <p class="muted" style="margin:6px 0 10px">Harus lolos di <b>tiap</b> subtes, bukan cuma totalnya.</p>
       <div class="tblwrap"><table>
         <thead><tr><th>Subtes</th><th class="n">Soal asli</th><th class="n">Nilai maks</th><th class="n">Passing grade</th><th>Penilaian</th></tr></thead>
@@ -368,9 +421,9 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
           <tr><td><b>Total</b></td><td class="n"><b>110</b></td><td class="n"><b>550</b></td><td class="n"></td><td>Waktu 100 menit</td></tr>
         </tbody>
       </table></div>
-      <p class="note" style="margin-top:10px">Angka dari Kepmenpan RB No. 321 Tahun 2024, menurut berita tetap dipakai buat CPNS 2026. Formasi khusus (cumlaude, disabilitas, dll) aturannya beda. Cek pengumuman resmi di <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">sscasn.bkn.go.id</a>.</p>
-      <p class="note" id="bank-info" style="margin-top:6px"></p>
-    </div>
+      <p class="note" style="margin-top:10px">Sumber: Kepmenpan RB No. 321 Tahun 2024. Cek pengumuman resmi di <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">sscasn.bkn.go.id</a>.</p>
+      <p class="note" id="bank-info" hidden></p>
+    </details>
   </section>
 
   <!-- QUIZ -->
@@ -597,7 +650,7 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
       <tr><td class="n">Psl 24A (1)</td><td>MA, antara lain menguji peraturan di bawah UU terhadap UU</td></tr>
       <tr><td class="n">Psl 24A (3)</td><td>Calon hakim agung diusulkan KY ke DPR untuk disetujui, ditetapkan Presiden</td></tr>
       <tr><td class="n">Psl 24B</td><td>Komisi Yudisial</td></tr>
-      <tr><td class="n">Psl 24C (1)</td><td>Mahkamah Konstitusi (empat kewenangan MK ada di ayat ini)</td></tr>
+      <tr><td class="n">Psl 24C (1)</td><td>Kewenangan MK: menguji UU terhadap UUD, memutus sengketa kewenangan lembaga negara, memutus pembubaran partai politik, memutus perselisihan hasil pemilu</td></tr>
       <tr><td class="n">Psl 25A</td><td>Indonesia negara kepulauan berciri Nusantara</td></tr>
       <tr><td class="n">Psl 27 (1)</td><td>Persamaan kedudukan dalam hukum dan pemerintahan</td></tr>
       <tr><td class="n">Psl 27 (2)</td><td>Hak atas pekerjaan dan penghidupan yang layak</td></tr>
@@ -628,7 +681,7 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
       <tr><td>DPD</td><td>Anggota sama jumlahnya tiap provinsi, total tidak lebih dari 1/3 anggota DPR</td></tr>
       <tr><td>Presiden</td><td>Menjabat 5 tahun dan maksimal dua periode, menetapkan Perppu, menetapkan hakim agung</td></tr>
       <tr><td>Mahkamah Agung (MA)</td><td>Menguji peraturan di bawah UU terhadap UU</td></tr>
-      <tr><td>Mahkamah Konstitusi (MK)</td><td>Empat kewenangan di Pasal 24C (1), memeriksa dan memutus dugaan pelanggaran Presiden (Pasal 7B). <b>Bukan</b> menguji peraturan di bawah UU</td></tr>
+      <tr><td>Mahkamah Konstitusi (MK)</td><td>Pasal 24C (1): menguji UU terhadap UUD, sengketa kewenangan lembaga negara, pembubaran partai politik, perselisihan hasil pemilu. Juga memeriksa dan memutus dugaan pelanggaran Presiden (Pasal 7B). <b>Bukan</b> menguji peraturan di bawah UU</td></tr>
       <tr><td>Komisi Yudisial (KY)</td><td>Mengusulkan calon hakim agung kepada DPR</td></tr>
       <tr><td>BPK</td><td>Memeriksa keuangan negara, hasilnya diserahkan ke DPR, DPD, dan DPRD</td></tr>
       <tr><td>KPU</td><td>Menyelenggarakan pemilu, <b>bukan</b> melantik Presiden</td></tr>
@@ -749,7 +802,7 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
     <div class="tblwrap"><table>
       <thead><tr><th>Nilai BerAKHLAK</th><th>Artinya</th></tr></thead>
       <tbody>
-      <tr><td><b>Ber</b>orientasi Pelayanan</td><td>Nilai pertama, melayani masyarakat</td></tr>
+      <tr><td><b>Ber</b>orientasi Pelayanan</td><td>Komitmen memberikan pelayanan prima demi kepuasan masyarakat</td></tr>
       <tr><td><b>A</b>kuntabel</td><td>Bertanggung jawab atas kepercayaan yang diberikan</td></tr>
       <tr><td><b>K</b>ompeten</td><td>Terus belajar mengembangkan kapabilitas</td></tr>
       <tr><td><b>H</b>armonis</td><td>Saling peduli dan menghargai perbedaan</td></tr>
@@ -849,6 +902,7 @@ button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transpare
     </table></div>
     <div class="cols">
       <div>
+        <p class="note">Partikel “pun” ditulis terpisah (apa pun, siapa pun), kecuali kata penghubung yang sudah padu: walaupun, meskipun, adapun, sekalipun (artinya meskipun), bagaimanapun.</p>
         <h4>Konjungsi</h4>
         <div class="tblwrap"><table>
           <thead><tr><th>Hubungan</th><th>Kata</th></tr></thead>
@@ -2185,16 +2239,16 @@ const SEC = {
 };
 const TAG = {
   TWK:{pilar:"Pancasila dan pilar negara", uud:"UUD 1945 dan lembaga negara", sejarah:"Sejarah perjuangan", nasionalisme:"Nasionalisme dan bela negara", integritas:"Integritas dan antikorupsi", bahasa:"Bahasa Indonesia"},
-  TIUV:{analogi:"Analogi kata", padanan:"Sinonim dan antonim", silogisme:"Silogisme dan logika", analitis:"Analitis (urutan, posisi)"},
+  TIUV:{analogi:"Analogi kata", padanan:"Sinonim dan antonim", silogisme:"Silogisme dan logika", analitis:"Analitis (urutan, posisi)", bacaan:"Pemahaman bacaan"},
   GENGRUP:{deret:"Deret angka", hitung:"Berhitung cepat", pk:"Perbandingan kuantitatif", cerita:"Soal cerita", figural:"Figural"},
   TKP:{pelayanan:"Pelayanan publik", jejaring:"Jejaring kerja", sosbud:"Sosial budaya", tik:"Teknologi informasi", profesional:"Profesionalisme", antiradikal:"Anti radikalisme"}
 };
 /* Komposisi simulasi, meniru kisi-kisi SKD */
 const BP_TWK = {pilar:6, uud:6, sejarah:5, nasionalisme:5, integritas:4, bahasa:4};      // 30
-const BP_TIU_V = {analogi:3, padanan:2, silogisme:4, analitis:3};                      // 12 verbal
+const BP_TIU_V = {analogi:3, padanan:2, silogisme:3, analitis:2, bacaan:2};            // 12 verbal
 const BP_TIU_G = {hitung:3, deret:5, pk:3, cerita:7, figural:5};                       // 23 numerik + figural
 const BP_TKP = [8, 8, 8, 7, 7, 7];                                                     // 45, dibagi acak ke 6 aspek
-const URUT_TIU = ["analogi","padanan","silogisme","analitis","hitung","deret","pk","cerita","figural"];
+const URUT_TIU = ["analogi","padanan","silogisme","analitis","bacaan","hitung","deret","pk","cerita","figural"];
 const MENIT_PER_SOAL = 100/110;
 const SOAL_PER_MATERI = 10, MAKS_SALAH = 20, MAKS_RIWAYAT = 15;
 const LETTERS = "ABCDE";
@@ -2211,9 +2265,10 @@ const store = {
 
 /* ===================== BANK ===================== */
 const POOL = {
-  TWK: BANK_TWK.map((x, i) => ({id:"W" + i, sec:"TWK", tag:x.t, src:x})),
-  TIUV: LAMA_TIU_VERBAL.concat(BANK_TIU_VERBAL).map((x, i) => ({id:"V" + i, sec:"TIU", tag:(x.t === "sinonim" || x.t === "antonim") ? "padanan" : x.t, src:x})),
-  TKP: LAMA_TKP.concat(BANK_TKP_BARU).map((x, i) => ({id:"K" + i, sec:"TKP", tag:x.a, src:x}))
+  /* bank tambahan ditempel di belakang supaya id soal lama tetap sama */
+  TWK: BANK_TWK.concat(typeof BANK_TWK_2 !== "undefined" ? BANK_TWK_2 : []).map((x, i) => ({id:"W" + i, sec:"TWK", tag:x.t, src:x})),
+  TIUV: LAMA_TIU_VERBAL.concat(BANK_TIU_VERBAL, typeof BANK_TIU_V2 !== "undefined" ? BANK_TIU_V2 : []).map((x, i) => ({id:"V" + i, sec:"TIU", tag:(x.t === "sinonim" || x.t === "antonim") ? "padanan" : x.t, src:x})),
+  TKP: LAMA_TKP.concat(BANK_TKP_BARU, typeof BANK_TKP_2 !== "undefined" ? BANK_TKP_2 : []).map((x, i) => ({id:"K" + i, sec:"TKP", tag:x.a, src:x}))
 };
 const BY_ID = {}; POOL.TWK.concat(POOL.TIUV, POOL.TKP).forEach(e => { BY_ID[e.id] = e; });
 const GEN_GRUP = {}; Object.keys(GEN_TIU).forEach(k => { const g = GEN_TIU[k].grup; (GEN_GRUP[g] = GEN_GRUP[g] || []).push(k); });
@@ -2239,8 +2294,11 @@ function buildTWK(){
   return shuffle(out, Math.random).map(e => itemFixed(e, Math.random));
 }
 function buildTIU(){
-  const items = [];
-  Object.keys(BP_TIU_V).forEach(t => pickFixed(POOL.TIUV.filter(e => e.tag === t), BP_TIU_V[t]).forEach(e => items.push(itemFixed(e, Math.random))));
+  const items = [], v = [];
+  Object.keys(BP_TIU_V).forEach(t => v.push(...pickFixed(POOL.TIUV.filter(e => e.tag === t), BP_TIU_V[t])));
+  const target = Object.values(BP_TIU_V).reduce((a, b) => a + b, 0);
+  if (v.length < target){ const ids = new Set(v.map(e => e.id)); v.push(...pickFixed(POOL.TIUV.filter(e => !ids.has(e.id)), target - v.length)); }
+  v.forEach(e => items.push(itemFixed(e, Math.random)));
   Object.keys(BP_TIU_G).forEach(g => genKeys(g, BP_TIU_G[g]).forEach(k => items.push(itemGen(k, Math.random))));
   return urutTIU(items);
 }
@@ -2268,6 +2326,8 @@ function buildSalah(){
 let S = null;
 function show(v){
   ["belajar","topik","menu","quiz","hasil","contekan","tips","print"].forEach(x => { $("#v-" + x).hidden = (x !== v); });
+  document.body.classList.toggle("in-quiz", v === "quiz");
+  if (v === "belajar") renderBelajar();
   const tab = (v === "contekan" || v === "tips") ? v : (v === "belajar" || v === "topik") ? "belajar" : "latihan";
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === tab)));
   window.scrollTo(0, 0);
@@ -2396,6 +2456,7 @@ function finish(){
   S.done = true; clearInterval(S.timer);
   $("#confirm").hidden = true;
   catat();
+  if (S.mode.topik && T){ const ts = store.get("topikSkor", {}); ts[T.m.kind + ":" + T.m.key] = {b:S.items.filter((it, i) => S.ans[i] !== null && it.opts[S.ans[i]].s === 5).length, n:S.items.length}; store.set("topikSkor", ts); }
   const secs = ["TWK","TIU","TKP"].filter(s => S.items.some(i => i.sec === s));
   const per = {};
   secs.forEach(s => { per[s] = {n:0, benar:0, raw:0, kosong:0}; });
@@ -2485,14 +2546,14 @@ function buildMenu(){
     b.addEventListener("click", () => start(MODES[key]));
     box.append(b);
   };
-  kartu("FULL", "Simulasi SKD lengkap", "TWK 30 + TIU 35 + TKP 45, urutan dan waktu kayak ujian asli", "110 soal · 100 menit", true);
+  kartu("FULL", "Simulasi SKD lengkap", "Kayak ujian asli", "110 soal · 100 menit", true);
   kartu("TWK", "TWK", SEC.TWK.nama, "30 soal · " + menitUntuk(30) + " menit");
   kartu("TIU", "TIU", SEC.TIU.nama, "35 soal · " + menitUntuk(35) + " menit");
   kartu("TKP", "TKP", SEC.TKP.nama, "45 soal · " + menitUntuk(45) + " menit");
 
 
   const nSalah = Object.keys(store.get("salah", {})).length;
-  $("#salah-info").textContent = nSalah ? nSalah + " soal tercatat salah atau belum maksimal. Yang dijawab benar akan hilang dari daftar. Sekali latihan maksimal " + MAKS_SALAH + " soal." : "Belum ada. Soal yang kamu jawab salah otomatis masuk ke sini.";
+  $("#salah-info").textContent = nSalah ? nSalah + " soal. Kalau sudah dijawab benar, hilang sendiri." : "Belum ada. Soal yang salah otomatis masuk ke sini.";
   $("#b-salah").disabled = !nSalah; $("#b-salah-reset").disabled = !nSalah;
   $("#salah-confirm").hidden = true;
 
@@ -2526,15 +2587,19 @@ const BELAJAR = [
 ];
 const CONTOH_GEN = 6;
 let T = null;
-function infoTopik(m){ return m.kind === "GENGRUP" ? "Contoh soal + cara hitung, angkanya baru terus" : POOL[m.kind].filter(e => e.tag === m.key).length + " tanya-jawab dengan penjelasan"; }
+function infoTopik(m){ return m.kind === "GENGRUP" ? "Angka acak" : POOL[m.kind].filter(e => e.tag === m.key).length + " soal"; }
 function renderBelajar(){
   const box = $("#belajar-list"); box.innerHTML = "";
   BELAJAR.forEach(g => {
     box.append(el("h3", g.judul));
     const grid = el("div", "", "tgrid");
-    g.list.forEach(m => {
+    g.list.filter(m => m.kind === "GENGRUP" || POOL[m.kind].some(e => e.tag === m.key)).forEach(m => {
       const b = el("button", "", "tcard"); b.type = "button";
       b.append(el("b", m.label), el("span", infoTopik(m)));
+      const sk = store.get("topikSkor", {})[m.kind + ":" + m.key];
+      if (sk){ const pr = el("div", "", "tprog"), bar = el("i"), fill = el("b"), pct = Math.round(sk.b / sk.n * 100);
+        fill.style.width = pct + "%"; fill.style.background = pct >= 70 ? "var(--ok)" : "var(--warn)"; bar.append(fill);
+        pr.append(bar, el("span", "Terakhir " + sk.b + "/" + sk.n)); b.append(pr); }
       b.addEventListener("click", () => bukaTopik(g.sec, m));
       grid.append(b);
     });
@@ -2629,7 +2694,6 @@ $("#t-back").addEventListener("click", () => show("belajar"));
 $("#t-more").addEventListener("click", () => { renderTopik(true); window.scrollTo(0, $("#t-list").getBoundingClientRect().top + window.scrollY - 70); });
 $("#t-latihan").addEventListener("click", latihTopik);
 $("#t-latihan2").addEventListener("click", latihTopik);
-$("#b-ke-belajar").addEventListener("click", () => show("belajar"));
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
   if (t.dataset.tab === "contekan" || t.dataset.tab === "tips") show(t.dataset.tab);
   else if (t.dataset.tab === "belajar") show("belajar");

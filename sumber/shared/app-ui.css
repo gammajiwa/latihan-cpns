@@ -1,0 +1,62 @@
+
+/* ==== Lapisan UI aplikasi: font, navigasi bawah, kartu, progres ==== */
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400 800;font-display:swap;src:url(font/plus-jakarta-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --f-head:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);
+}
+@media (prefers-color-scheme: dark){ :root{ --shadow:0 1px 2px rgba(0,0,0,.35) } }
+body{letter-spacing:-.003em}
+h1,h2,h3{letter-spacing:-.015em}
+
+/* kartu lebih lembut */
+.card,.tcard,.mode,.rv,.opt,.chipbtn{box-shadow:var(--shadow)}
+.card,.rv,.tcard,.mode{border-radius:var(--radius)}
+.opt{border-radius:12px}
+.mode.full{box-shadow:0 6px 18px color-mix(in srgb, var(--accent) 30%, transparent)}
+.btn.primary{box-shadow:0 4px 12px color-mix(in srgb, var(--accent) 28%, transparent)}
+.opt[aria-pressed="true"]{box-shadow:0 0 0 1px var(--accent)}
+
+/* lipatan (details) */
+.lipat summary{cursor:pointer;font-weight:700;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.lipat summary::-webkit-details-marker{display:none}
+.lipat summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-right:4px;transition:transform .15s}
+.lipat[open] summary::after{transform:rotate(-135deg)}
+.lipat[open] summary{margin-bottom:10px}
+
+/* ikon tab */
+.tab{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tab svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* progres per materi */
+.tprog{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.tprog i{flex:1;height:6px;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;position:relative}
+.tprog i b{position:absolute;inset:0 auto 0 0;border-radius:3px}
+
+/* transisi halus antar halaman */
+@media (prefers-reduced-motion: no-preference){
+  main > section:not([hidden]){animation:masuk .18s ease-out}
+  @keyframes masuk{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+
+/* HP: navigasi pindah ke bawah layar, kayak aplikasi */
+@media (max-width:700px){
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;width:auto;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--surface);
+    padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));gap:2px;box-shadow:0 -4px 16px rgba(16,24,40,.07)}
+  .tab{flex:1;flex-direction:column;gap:3px;padding:6px 2px;font-size:11.5px;font-weight:600;border-radius:12px;background:none!important;box-shadow:none!important;color:var(--muted)}
+  .tab svg{width:22px;height:22px}
+  .tab[aria-selected="true"]{color:var(--accent)}
+  .tab[aria-selected="true"] svg{stroke-width:2.4}
+  body.app{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  body.app.in-quiz{padding-bottom:0}
+  body.in-quiz .tabs{display:none}
+  .top-in{padding-block:10px}
+}
+@media print{ .tabs{display:none!important} body.app{padding-bottom:0} }
+/* rapihin: label pakai font utama, tombol navigasi soal tidak patah */
+.chip,.tes .tahap,.grouplbl{font-family:var(--f-body);letter-spacing:.02em;font-weight:700}
+.qnav{grid-template-columns:1fr auto 1.25fr}
+.qnav .btn{white-space:nowrap;padding-inline:14px}

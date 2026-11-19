@@ -9,7 +9,7 @@
 /*__CSS__*/
 </style>
 </head>
-<body>
+<body class="app">
 <header class="top">
   <div class="wrap top-in">
     <div class="brand">
@@ -17,26 +17,22 @@
       <div><h1>Latihan SKB Analis Lab</h1><p><a class="switch" href="./">‹ Ganti tes</a> · Pranata Laboratorium Kesehatan</p></div>
     </div>
     <nav class="tabs" role="tablist">
-      <button class="tab" role="tab" data-tab="belajar" aria-selected="true">Belajar</button>
-      <button class="tab" role="tab" data-tab="latihan" aria-selected="false">Latihan</button>
-      <button class="tab" role="tab" data-tab="contekan" aria-selected="false">Ringkasan</button>
-      <button class="tab" role="tab" data-tab="tips" aria-selected="false">Tips</button>
+      <button class="tab" role="tab" data-tab="belajar" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg><span>Belajar</span></button>
+      <button class="tab" role="tab" data-tab="latihan" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>Latihan</span></button>
+      <button class="tab" role="tab" data-tab="contekan" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg><span>Ringkasan</span></button>
+      <button class="tab" role="tab" data-tab="tips" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.8 10.6c.6.5.8 1.2.8 1.9V16h6v-.5c0-.7.3-1.4.8-1.9A6 6 0 0 0 12 3z"/></svg><span>Tips</span></button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
   <section id="v-belajar">
-    <div class="intro">
-      <h2>Belajar per bidang</h2>
-      <p>Pilih bidang, baca tanya-jawab dan penjelasannya, lalu tekan tombol latihan di bawahnya.</p>
-    </div>
     <div class="card guide">
-      <b>Baru mulai? Ikuti urutan ini:</b>
+      <b>Cara belajar</b>
       <ol>
-        <li>Ketuk salah satu bidang di bawah, baca soal, jawaban, dan penjelasannya.</li>
-        <li>Kalau sudah paham, tekan <b>Latihan 10 soal materi ini</b>.</li>
-        <li>Seminggu 2 kali, buka tab <b>Latihan</b> dan coba <b>Simulasi SKB lengkap</b>. Rapornya menunjukkan bidang yang masih lemah.</li>
+        <li>Pilih bidang di bawah.</li>
+        <li>Baca soal dan jawabannya.</li>
+        <li>Tekan <b>Latihan 10 soal</b>.</li>
       </ol>
     </div>
     <div id="belajar-list"></div>
@@ -45,33 +41,28 @@
   <section id="v-topik" hidden>
     <div><button class="btn sm" id="t-back" type="button">‹ Daftar bidang</button></div>
     <div class="intro"><span class="chip" id="t-sec" style="align-self:flex-start">SKB</span><h2 id="t-judul"></h2><p class="muted" id="t-info"></p></div>
-    <button class="btn primary big" id="t-latihan" type="button">Latihan 10 soal materi ini</button>
-    <label class="toggle card" for="t-tutup"><input type="checkbox" id="t-tutup"><span><b>Tutup jawaban</b><br><span class="muted">Coba jawab di kepala dulu, lalu ketuk “Lihat jawaban” di tiap soal.</span></span></label>
+    <button class="btn primary big" id="t-latihan" type="button">Latihan 10 soal</button>
+    <label class="toggle card" for="t-tutup"><input type="checkbox" id="t-tutup"><span><b>Tutup jawaban</b> <span class="muted">(buat tes diri sendiri)</span></span></label>
     <div id="t-list" class="tlist"></div>
-    <button class="btn" id="t-more" type="button" hidden>Tampilkan contoh soal lain</button>
-    <button class="btn primary big" id="t-latihan2" type="button">Latihan 10 soal materi ini</button>
+    <button class="btn" id="t-more" type="button" hidden>Contoh soal lain</button>
+    <button class="btn primary big" id="t-latihan2" type="button">Latihan 10 soal</button>
   </section>
 
   <section id="v-menu" hidden>
     <div class="intro">
-      <h2>Latihan SKB Pranata Laboratorium Kesehatan</h2>
-      <p>SKB (Seleksi Kompetensi Bidang) menguji ilmu teknis analis lab. Soal diambil acak dari bank soal, soal hitungan lab dibuat ulang dengan angka baru tiap main, dan soal yang jarang muncul didahulukan.</p>
+      <h2>Simulasi</h2>
+      <p>Soalnya beda tiap kali main.</p>
     </div>
     <div class="modes" id="modes"></div>
     <label class="toggle card" for="opt-belajar">
       <input type="checkbox" id="opt-belajar">
-      <span><b>Mode belajar</b><br><span class="muted">Pembahasan langsung muncul tiap selesai jawab, tanpa timer. Matikan kalau mau simulasi kayak ujian beneran.</span></span>
+      <span><b>Mode belajar</b> <span class="muted">(langsung lihat pembahasan, tanpa timer)</span></span>
     </label>
     <div class="card sub">
-      <h3 style="margin-top:0">Latihan per bidang</h3>
-      <p class="muted">Mau latihan satu bidang saja? Buka tab Belajar, pilih bidangnya, lalu tekan “Latihan 10 soal materi ini”.</p>
-      <div><button class="btn" id="b-ke-belajar" type="button">Buka tab Belajar</button></div>
-    </div>
-    <div class="card sub">
-      <h3 style="margin-top:0">Ulangi soal yang pernah salah</h3>
+      <h3 style="margin-top:0">Soal yang pernah salah</h3>
       <p class="muted" id="salah-info"></p>
       <div class="row">
-        <button class="btn primary" id="b-salah" type="button">Latihan soal yang salah</button>
+        <button class="btn primary" id="b-salah" type="button">Ulangi soal salah</button>
         <button class="btn" id="b-salah-reset" type="button">Kosongkan daftar</button>
       </div>
       <p class="note" id="salah-confirm" hidden></p>
@@ -80,8 +71,8 @@
       <h3 style="margin-top:0">Riwayat nilai</h3>
       <div class="tblwrap"><table id="riwayat"></table></div>
     </div>
-    <div class="card">
-      <h3 style="margin-top:0">Tentang SKB</h3>
+    <details class="card lipat">
+      <summary>Tentang SKB dan materi resminya</summary>
       <ul style="margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
         <li>SKB ikut kalau lolos passing grade SKD. Biasanya pakai CAT BKN dengan materi teknis sesuai jabatan.</li>
         <li>Jenjang <b>Terampil</b> untuk lulusan D3, jenjang <b>Ahli Pertama</b> untuk lulusan D4/S1. Materinya sama, Ahli Pertama lebih dalam di mutu, manajemen, dan molekuler.</li>
@@ -107,7 +98,7 @@
       </div>
       <p class="note" style="margin-top:8px">Sumber: Lampiran Surat Menteri PANRB Nomor B/5457/M.SM.01.00/2024 tentang Materi Pokok Soal SKB dengan CAT (CPNS TA 2024), halaman 91. Untuk jenjang Terampil, lampiran itu cuma merujuk ke kamus kompetensi tanpa rincian topik. Kisi-kisi CPNS 2021 untuk Terampil menekankan pengambilan, penerimaan, dan pengiriman spesimen, sediaan hematologi dan mikrobiologi, serta perawatan alat. Semua topik itu ada di bank soal ini.</p>
       <p class="note" id="bank-info" style="margin-top:10px"></p>
-    </div>
+    </details>
   </section>
 
   <section id="v-quiz" hidden>
@@ -179,12 +170,13 @@ const TOPIK = {
   praanalitik:"Pra-analitik dan spesimen", hematologi:"Hematologi dan hemostasis", kimia:"Kimia klinik", urinalisis:"Urinalisis, feses, cairan tubuh",
   bankdarah:"Bank darah", mikrobiologi:"Mikrobiologi", parasitologi:"Parasitologi", mikologi:"Mikologi (jamur)", imunoserologi:"Imunoserologi",
   sitohisto:"Sitohistoteknologi", molekuler:"Diagnostik molekuler", mutu:"Kendali mutu dan K3", manajemen:"Manajemen mutu dan pelayanan lab",
-  toksikologi:"Toksikologi klinik", kebijakan:"Kebijakan kesehatan", hitung:"Hitungan lab"
+  toksikologi:"Toksikologi klinik (pengayaan)", kebijakan:"Kebijakan kesehatan", hitung:"Hitungan lab"
 };
 /* Komposisi simulasi per bidang, mengikuti materi pokok resmi PLK (PANRB B/5457/2024) */
 const BP = {
-  100:{praanalitik:10, hematologi:13, kimia:12, urinalisis:5, bankdarah:5, mikrobiologi:9, parasitologi:6, mikologi:4, imunoserologi:7, sitohisto:5, molekuler:5, mutu:5, manajemen:5, toksikologi:2, kebijakan:2, hitung:5},
-  50:{praanalitik:5, hematologi:6, kimia:6, urinalisis:3, bankdarah:3, mikrobiologi:4, parasitologi:3, mikologi:2, imunoserologi:4, sitohisto:2, molekuler:3, mutu:3, manajemen:2, toksikologi:1, kebijakan:1, hitung:2}
+  /* toksikologi = pengayaan (tidak ada di materi pokok 2024), jadi tidak masuk simulasi */
+  100:{praanalitik:10, hematologi:14, kimia:12, urinalisis:6, bankdarah:5, mikrobiologi:9, parasitologi:6, mikologi:4, imunoserologi:7, sitohisto:5, molekuler:5, mutu:5, manajemen:5, toksikologi:0, kebijakan:2, hitung:5},
+  50:{praanalitik:5, hematologi:6, kimia:6, urinalisis:4, bankdarah:3, mikrobiologi:4, parasitologi:3, mikologi:2, imunoserologi:4, sitohisto:2, molekuler:3, mutu:3, manajemen:2, toksikologi:0, kebijakan:1, hitung:2}
 };
 const MENIT = {100:90, 50:45};
 const SOAL_PER_MATERI = 10, MAKS_SALAH = 20, MAKS_RIWAYAT = 15, BATAS_AMAN = 70;
@@ -244,6 +236,8 @@ function buildSalah(){
 let S = null;
 function show(v){
   ["belajar","topik","menu","quiz","hasil","contekan","tips","print"].forEach(x => { $("#v-" + x).hidden = (x !== v); });
+  document.body.classList.toggle("in-quiz", v === "quiz");
+  if (v === "belajar") renderBelajar();
   const tab = (v === "contekan" || v === "tips") ? v : (v === "belajar" || v === "topik") ? "belajar" : "latihan";
   document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === tab)));
   window.scrollTo(0, 0);
@@ -337,6 +331,7 @@ function finish(){
     if (it.opts[a].s){ benar++; r.b++; delete salah[it.id]; } else salah[it.id] = 1;
   });
   store.set("seen", seen); store.set("salah", salah);
+  if (S.mode.topik){ const ts = store.get("topikSkor", {}); ts[S.mode.topik] = {b:benar, n:S.items.length}; store.set("topikSkor", ts); }
   const nilai = Math.round(benar / S.items.length * 100), menit = Math.round((Date.now() - S.startAt) / 60000);
   const sum = $("#h-sum"); sum.innerHTML = "";
   sum.append(el("div", S.mode.label + (S.belajar ? " · mode belajar" : "") + " · " + menit + " menit", "muted"));
@@ -396,12 +391,12 @@ function buildMenu(){
     const b = el("button", "", "mode" + (full ? " full" : "")); b.type = "button";
     b.append(el("b", judul), el("span", sub), el("em", meta)); b.addEventListener("click", () => start(m)); box.append(b);
   };
-  kartu(MODES.S100, "Simulasi SKB lengkap", "Semua bidang laboratorium, proporsinya disebar kayak ujian", "100 soal · " + MENIT[100] + " menit", true);
-  kartu(MODES.S50, "Simulasi singkat", "Semua bidang, setengah porsi", "50 soal · " + MENIT[50] + " menit");
-  kartu(modeTopik("hitung"), "Hitungan lab", "Indeks eritrosit, LDL, CV, pengenceran, Westgard", "10 soal · angka acak");
-  kartu({label:"Ulangi soal yang salah", ujian:false, menit:18, build:buildSalah}, "Soal salah", "Ulangi yang pernah salah sampai benar", "maks " + MAKS_SALAH + " soal");
+  kartu(MODES.S100, "Simulasi SKB lengkap", "Semua bidang", "100 soal · " + MENIT[100] + " menit", true);
+  kartu(MODES.S50, "Simulasi singkat", "Setengah porsi", "50 soal · " + MENIT[50] + " menit");
+  kartu(modeTopik("hitung"), "Hitungan lab", "Rumus dan angka", "10 soal");
+  kartu({label:"Ulangi soal yang salah", ujian:false, menit:18, build:buildSalah}, "Soal salah", "Ulangi sampai benar", "maks " + MAKS_SALAH + " soal");
   const nSalah = Object.keys(store.get("salah", {})).length;
-  $("#salah-info").textContent = nSalah ? nSalah + " soal tercatat salah. Yang dijawab benar akan hilang dari daftar. Sekali latihan maksimal " + MAKS_SALAH + " soal." : "Belum ada. Soal yang kamu jawab salah otomatis masuk ke sini.";
+  $("#salah-info").textContent = nSalah ? nSalah + " soal. Kalau sudah dijawab benar, hilang sendiri." : "Belum ada. Soal yang salah otomatis masuk ke sini.";
   $("#b-salah").disabled = !nSalah; $("#b-salah-reset").disabled = !nSalah; $("#salah-confirm").hidden = true;
   box.lastChild.disabled = !nSalah;
   const rw = store.get("riwayat", []), tb = $("#riwayat");
@@ -423,11 +418,12 @@ function buildMenu(){
 /* ===================== BELAJAR (mode baca) ===================== */
 const BELAJAR = [
   {judul:"Spesimen, mutu, dan pelayanan lab", list:["praanalitik","mutu","manajemen","kebijakan"]},
-  {judul:"Pemeriksaan laboratorium", list:["hematologi","kimia","urinalisis","bankdarah","imunoserologi","mikrobiologi","parasitologi","mikologi","sitohisto","molekuler","toksikologi","hitung"]}
+  {judul:"Pemeriksaan laboratorium", list:["hematologi","kimia","urinalisis","bankdarah","imunoserologi","mikrobiologi","parasitologi","mikologi","sitohisto","molekuler","hitung"]},
+  {judul:"Pengayaan (di luar materi pokok 2024)", list:["toksikologi"]}
 ];
 const CONTOH_GEN = 8;
 let T = null;
-function infoTopik(t){ return t === "hitung" ? "Contoh soal + cara hitung, angkanya baru terus" : POOL.filter(e => e.tag === t).length + " tanya-jawab dengan penjelasan"; }
+function infoTopik(t){ return t === "hitung" ? "Angka acak" : POOL.filter(e => e.tag === t).length + " soal"; }
 function renderBelajar(){
   const box = $("#belajar-list"); box.innerHTML = "";
   BELAJAR.forEach(g => {
@@ -436,6 +432,10 @@ function renderBelajar(){
     g.list.filter(t => TOPIK[t] && (t === "hitung" || POOL.some(e => e.tag === t))).forEach(t => {
       const b = el("button", "", "tcard"); b.type = "button";
       b.append(el("b", TOPIK[t]), el("span", infoTopik(t)));
+      const sk = store.get("topikSkor", {})[t];
+      if (sk){ const pr = el("div", "", "tprog"), bar = el("i"), fill = el("b"), pct = Math.round(sk.b / sk.n * 100);
+        fill.style.width = pct + "%"; fill.style.background = pct >= 70 ? "var(--ok)" : "var(--warn)"; bar.append(fill);
+        pr.append(bar, el("span", "Terakhir " + sk.b + "/" + sk.n)); b.append(pr); }
       b.addEventListener("click", () => bukaTopik(t));
       grid.append(b);
     });
@@ -508,7 +508,6 @@ $("#t-back").addEventListener("click", () => show("belajar"));
 $("#t-more").addEventListener("click", () => { renderTopik(true); window.scrollTo(0, $("#t-list").getBoundingClientRect().top + window.scrollY - 70); });
 $("#t-latihan").addEventListener("click", latihTopik);
 $("#t-latihan2").addEventListener("click", latihTopik);
-$("#b-ke-belajar").addEventListener("click", () => show("belajar"));
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
   if (t.dataset.tab === "contekan" || t.dataset.tab === "tips") show(t.dataset.tab);
   else if (t.dataset.tab === "belajar") show("belajar");

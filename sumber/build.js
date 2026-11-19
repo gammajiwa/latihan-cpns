@@ -4,9 +4,12 @@
    Isi soal diedit di sumber/skd/*.js dan sumber/skb/*.js, lalu jalankan build lagi. */
 const fs = require("fs"), path = require("path"), { execFileSync } = require("child_process");
 const SRC = __dirname, ROOT = path.join(SRC, "..");
-const baca = (...p) => fs.readFileSync(path.join(SRC, ...p), "utf8");
-const ada = (...p) => fs.existsSync(path.join(SRC, ...p));
-const CSS = baca("shared", "style.css") + baca("shared", "style-tambahan.css");
+/* Opsional: SKIP="skd/bank-skd-2.js" melewati file, OVERRIDE="skb/bank-skb-c.js=D:/x.js" memakai salinan lain (buat build dari versi yang sudah diverifikasi) */
+const SKIP = (process.env.SKIP || "").split(",").filter(Boolean);
+const OVR = Object.fromEntries((process.env.OVERRIDE || "").split(";").filter(Boolean).map(s => s.split("=")));
+const baca = (...p) => fs.readFileSync(OVR[p.join("/")] || path.join(SRC, ...p), "utf8");
+const ada = (...p) => !SKIP.includes(p.join("/")) && fs.existsSync(path.join(SRC, ...p));
+const CSS = baca("shared", "style.css") + baca("shared", "style-tambahan.css") + baca("shared", "app-ui.css");
 const HEAD = baca("shared", "pwa-head.html");
 
 function rakit(template, isi){
@@ -19,11 +22,11 @@ function rakit(template, isi){
 function hitung(code, nama){ return new Function(code + "\nreturn " + nama + ";")(); }
 
 /* ---- SKD ---- */
-const skdBanks = ["bank-twk.js", "bank-lama.js", "bank-tiu-verbal.js", "bank-tkp-baru.js", "gen-tiu.js"].map(f => baca("skd", f)).join("\n");
+const skdBanks = ["bank-twk.js", "bank-lama.js", "bank-tiu-verbal.js", "bank-tkp-baru.js", "bank-skd-2.js", "gen-tiu.js"].filter(f => ada("skd", f)).map(f => baca("skd", f)).join("\n");
 const skd = rakit(baca("skd", "app.html"), {
   "/*__CSS__*/": CSS, "<!--__CONTEKAN__-->": baca("skd", "contekan.html"), "<!--__TIPS__-->": baca("skd", "tips.html"), "/*__BANKS__*/": skdBanks
 });
-const nSKD = hitung(skdBanks, "BANK_TWK.length + LAMA_TIU_VERBAL.length + BANK_TIU_VERBAL.length + LAMA_TKP.length + BANK_TKP_BARU.length");
+const nSKD = hitung(skdBanks, "BANK_TWK.length + LAMA_TIU_VERBAL.length + BANK_TIU_VERBAL.length + LAMA_TKP.length + BANK_TKP_BARU.length + (typeof BANK_TWK_2 !== 'undefined' ? BANK_TWK_2.length + BANK_TIU_V2.length + BANK_TKP_2.length : 0)");
 const gSKD = hitung(skdBanks, "Object.keys(GEN_TIU).length");
 
 /* ---- SKB ---- */

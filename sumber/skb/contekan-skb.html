@@ -1,1 +1,836 @@
-  <section id="v-contekan" class="cheat" hidden><h2>Ringkasan materi SKB</h2><p class="lead">Sedang disusun.</p></section>
+  <section id="v-contekan" class="cheat" hidden>
+    <div class="row noprint" style="justify-content:space-between"><h2>Ringkasan materi SKB</h2><button class="btn" type="button" onclick="window.print()">Cetak / simpan PDF</button></div>
+    <p class="lead">Ringkasan 16 bidang SKB analis laboratorium kesehatan untuk dibaca ulang sebelum tes; semua isinya diambil dari bank soal, pembahasan, dan rumus hitungan di aplikasi ini.</p>
+
+    <h3>Pra-analitik dan spesimen</h3>
+    <p class="note">Tahap pra-analitik paling banyak menyumbang kesalahan lab: salah identifikasi, volume atau tabung tidak sesuai, hemolisis, penyimpanan keliru.</p>
+
+    <h4>Tabung dan antikoagulan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Tutup</th><th>Isi</th><th>Dipakai untuk</th></tr></thead>
+      <tbody>
+        <tr><td>Botol kultur</td><td>Media kultur (steril)</td><td>Kultur darah, selalu diambil paling awal</td></tr>
+        <tr><td>Biru</td><td>Natrium sitrat</td><td>Koagulasi (PT, APTT), rasio 1 sitrat : 9 darah</td></tr>
+        <tr><td>Merah / kuning</td><td>Tanpa antikoagulan (serum)</td><td>Kimia klinik, serologi</td></tr>
+        <tr><td>Hijau</td><td>Heparin</td><td>Kimia tertentu; darah arteri untuk gas darah memakai heparin</td></tr>
+        <tr><td>Ungu</td><td>EDTA (K2 atau K3), mengikat kalsium</td><td>Hematologi rutin</td></tr>
+        <tr><td>Abu-abu</td><td>Natrium fluorida</td><td>Glukosa, menghambat glikolisis</td></tr>
+      </tbody>
+    </table></div>
+    <p class="callout"><b>Urutan pengambilan (CLSI):</b> kultur darah, sitrat (biru), serum (merah/kuning), heparin (hijau), EDTA (ungu), fluorida (abu-abu). Tujuannya mencegah aditif satu tabung mencemari tabung lain.</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Kesalahan</th><th>Akibat</th></tr></thead>
+      <tbody>
+        <tr><td>EDTA mencemari serum (urutan salah)</td><td>Kalium naik palsu, kalsium turun palsu</td></tr>
+        <tr><td>Tabung sitrat terisi setengah</td><td>Sitrat berlebih relatif, PT memanjang palsu</td></tr>
+        <tr><td>Hematokrit sangat tinggi (di atas 55%)</td><td>PT dan APTT memanjang palsu; volume sitrat disesuaikan</td></tr>
+        <tr><td>Darah utuh dibiarkan lama di suhu ruang</td><td>Glukosa turun palsu (glikolisis sekitar 5 sampai 7% per jam)</td></tr>
+        <tr><td>Serum disentrifus sebelum beku sempurna</td><td>Fibrin di serum, dapat menyumbat probe alat</td></tr>
+        <tr><td>LED Westergren: sitrat 3,8% dengan darah 4 : 1</td><td>Tabung harus tegak, dibaca 1 jam; miring = LED naik palsu</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Pengambilan darah</h4>
+    <ul>
+      <li>Puasa glukosa: <b>8 sampai 12 jam</b>, air putih boleh. Trigliserida: puasa 10 sampai 12 jam (kilomikron setelah makan menaikkan TG).</li>
+      <li>Tourniquet <b>maksimal 1 menit</b> (lebih lama = hemokonsentrasi, protein dan kolesterol naik palsu).</li>
+      <li>Sudut jarum <b>15 sampai 30 derajat</b>, bevel menghadap ke atas.</li>
+      <li>Kapiler (ujung jari): tetes pertama dibuang, jangan memeras kuat.</li>
+      <li>Pasien terpasang infus: ambil dari lengan sisi lain. Kalau terpaksa, di bawah (distal) lokasi infus setelah infus dihentikan minimal 2 menit dan darah awal dibuang.</li>
+      <li>Darah tanpa antikoagulan dibiarkan <b>membeku sekitar 30 menit</b> sebelum disentrifus.</li>
+      <li>Identifikasi pasien: minimal <b>dua identitas</b> (nama lengkap dan tanggal lahir atau nomor rekam medis), bukan nomor kamar.</li>
+      <li>Identitas label tidak cocok dengan formulir: spesimen <b>ditolak</b>, ambil ulang.</li>
+    </ul>
+
+    <h4>Kualitas serum dan penyebab hemolisis</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Kondisi</th><th>Tampilan</th><th>Dampak</th></tr></thead>
+      <tbody>
+        <tr><td>Hemolitik</td><td>Merah muda sampai merah</td><td>Kalium naik palsu (kalium dalam eritrosit sekitar 20 kali serum)</td></tr>
+        <tr><td>Lipemik</td><td>Keruh putih seperti susu</td><td>Absorbansi fotometri naik, hasil menyimpang; penyebab: TG tinggi, kurang puasa</td></tr>
+        <tr><td>Ikterik</td><td>Kuning pekat</td><td>Bilirubin sangat tinggi</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Hemolisis in vitro: tarikan spuit terlalu kuat, jarum sangat kecil, mengocok tabung keras, alkohol belum kering.</p>
+
+    <h4>Urin, dahak, dan spesimen khusus</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Spesimen</th><th>Aturan</th></tr></thead>
+      <tbody>
+        <tr><td>Biakan urin</td><td>Urin porsi tengah (midstream), wadah steril, setelah membersihkan genitalia</td></tr>
+        <tr><td>Urin 24 jam</td><td>Urin pertama saat mulai dibuang, urin pertama hari berikutnya ikut ditampung</td></tr>
+        <tr><td>Dahak BTA</td><td>Pola <b>SP</b>: sewaktu (saat datang), pagi (bangun tidur sebelum makan). Pola SPS lama tidak dipakai</td></tr>
+        <tr><td>Swab nasofaring (virus)</td><td>Media transpor virus (VTM), kirim 2 sampai 8 derajat Celsius</td></tr>
+        <tr><td>Serum rujukan</td><td>Umumnya 2 sampai 8 derajat Celsius dengan cool pack, kecuali ada ketentuan lain</td></tr>
+        <tr><td>Pengiriman infeksius</td><td>Triple packaging: wadah primer, sekunder (bahan penyerap), kemasan luar. Formulir di antara kemasan sekunder dan luar</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Hematologi dan hemostasis</h3>
+
+    <h4>Hemoglobin, hematokrit, LED</h4>
+    <ul>
+      <li>Metode baku WHO untuk Hb: <b>sianmethemoglobin</b> (fotometri). Sahli dan Tallqvist kurang teliti.</li>
+      <li>Hematokrit = persentase volume eritrosit terhadap volume darah.</li>
+      <li>LED Westergren dibaca setelah 1 jam, satuan mm/jam.</li>
+      <li>Masa perdarahan Duke: tusuk cuping telinga, hisap darah dengan kertas saring tiap 30 detik. Metode Ivy: lengan bawah dengan manset 40 mmHg.</li>
+    </ul>
+
+    <h4>Faktor kamar hitung Improved Neubauer</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Sel</th><th>Pengenceran dan bidang</th><th>Volume</th><th class="n">Faktor</th></tr></thead>
+      <tbody>
+        <tr><td>Leukosit</td><td>Turk 20 kali, 4 bidang besar sudut</td><td>0,4 µL</td><td class="n">x 50</td></tr>
+        <tr><td>Eritrosit</td><td>200 kali, 5 bidang sedang (80 bidang kecil)</td><td>0,02 µL</td><td class="n">x 10.000</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Contoh: 160 leukosit x 50 = 8.000/µL. 450 eritrosit x 10.000 = 4,5 juta/µL.</p>
+
+    <h4>Indeks eritrosit dan interpretasinya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Indeks</th><th>Rumus</th><th>Normal umum</th></tr></thead>
+      <tbody>
+        <tr><td>MCV</td><td>Ht x 10 ÷ eritrosit (juta/µL)</td><td>80 sampai 100 fL</td></tr>
+        <tr><td>MCH</td><td>Hb x 10 ÷ eritrosit (juta/µL)</td><td>sekitar 27 sampai 31 pg</td></tr>
+        <tr><td>MCHC</td><td>Hb x 100 ÷ Ht</td><td>32 sampai 36 g/dL</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>MCV rendah + MCH/MCHC rendah = <b>mikrositik hipokrom</b> (defisiensi besi, talasemia).</li>
+      <li>MCV di atas 100 fL = makrositik. MCHC di bawah 32 = hipokrom.</li>
+      <li>Contoh: Ht 27% dan eritrosit 4,5 = MCV 60 fL. Hb 9 dan eritrosit 4,5 = MCH 20 pg. Hb 8 dan Ht 27 = MCHC 29,6 g/dL.</li>
+    </ul>
+
+    <h4>Morfologi eritrosit dan penyakitnya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Morfologi</th><th>Penyakit</th></tr></thead>
+      <tbody>
+        <tr><td>Sel target (pusat gelap, cincin pucat, cincin gelap)</td><td>Talasemia (juga hemoglobin C, penyakit hati)</td></tr>
+        <tr><td>Sel sabit (sickle)</td><td>Anemia sel sabit (Hb S)</td></tr>
+        <tr><td>Sferosit (kecil, bulat, padat, tanpa pucat sentral)</td><td>Sferositosis herediter</td></tr>
+        <tr><td>Skistosit, helmet cell (fragmen)</td><td>Hemolitik mikroangiopati (DIC, TTP)</td></tr>
+        <tr><td>Sel pensil (memanjang, hipokrom)</td><td>Anemia defisiensi besi</td></tr>
+        <tr><td>Eritrosit kebiruan semua (pada apus)</td><td>Buffer atau pewarna terlalu basa (pH buffer yang tepat sekitar 6,8 sampai 7,2)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Anemia defisiensi besi dan talasemia</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Parameter</th><th>Defisiensi besi</th><th>Talasemia</th></tr></thead>
+      <tbody>
+        <tr><td>Besi serum</td><td>Rendah</td><td>Normal atau naik</td></tr>
+        <tr><td>Feritin</td><td>Rendah</td><td>Normal atau naik</td></tr>
+        <tr><td>TIBC</td><td>Tinggi</td><td>Normal</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Retikulosit, leukosit, trombosit</h4>
+    <ul>
+      <li>Retikulosit diwarnai <b>supravital</b> (brilliant cresyl blue atau new methylene blue) pada darah segar tanpa fiksasi. Jala biru = sisa RNA. Analyzer memakai pewarna fluoresen pengikat RNA.</li>
+      <li>Hitung retikulosit: 25 per 1.000 eritrosit = 2,5%. Dewasa normal 0,5 sampai 1,5%; di atas itu sumsum tulang aktif.</li>
+      <li>Eosinofil naik (eosinofilia): infeksi cacing atau alergi. Infeksi bakteri piogenik menaikkan neutrofil.</li>
+      <li>Batang Auer: <b>leukemia mieloblastik akut</b> (garis mieloid).</li>
+      <li>Leukosit sangat tinggi dengan semua tahap maturasi granulosit, basofilia, splenomegali: <b>leukemia mielositik kronik</b>.</li>
+      <li>Leukosit terkoreksi (ada eritrosit berinti) = leukosit terhitung x 100 ÷ (100 + eritrosit berinti per 100 leukosit). Contoh: 12.000 x 100 ÷ 120 = 10.000/µL.</li>
+      <li>Trombosit rendah di tabung EDTA tapi apus menunjukkan gumpalan: <b>pseudotrombositopenia</b>. Ulangi dengan sitrat atau kapiler. Flag PLT clumps: cek apus dulu.</li>
+      <li>Aglutinin dingin (MCV tinggi palsu, eritrosit rendah palsu, MCHC tinggi palsu): hangatkan sampel 37 derajat Celsius lalu ulangi.</li>
+      <li>Sudut penggeser apus ideal 30 sampai 45 derajat. Sudut besar = apus pendek dan tebal; sudut kecil = panjang dan tipis.</li>
+    </ul>
+
+    <h4>Analyzer hematologi</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Metode</th><th>Prinsip</th></tr></thead>
+      <tbody>
+        <tr><td>Impedansi (Coulter)</td><td>Sel lewat apertur, pulsa listrik sebanding volume sel</td></tr>
+        <tr><td>Flow cytometry: forward scatter</td><td>Mencerminkan ukuran sel</td></tr>
+        <tr><td>Flow cytometry: side scatter</td><td>Mencerminkan kompleksitas internal (granula)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Hemostasis: PT, APTT, dan lainnya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Temuan</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>PT</td><td>Jalur ekstrinsik dan bersama. Dipakai menghitung INR (pantau <b>warfarin</b>, target umum 2 sampai 3)</td></tr>
+        <tr><td>APTT</td><td>Jalur intrinsik dan bersama. Dipakai memantau heparin tak terfraksi</td></tr>
+        <tr><td>PT normal, APTT memanjang</td><td>Defisiensi faktor intrinsik (VIII, IX, XI), mis. hemofilia A</td></tr>
+        <tr><td>Fibrinogen sangat rendah, PT dan APTT memanjang, D-dimer tinggi</td><td>DIC</td></tr>
+        <tr><td>D-dimer normal dengan kecurigaan klinis rendah</td><td>Menyingkirkan tromboemboli. D-dimer tinggi tidak spesifik</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Kimia klinik</h3>
+
+    <h4>Fotometri</h4>
+    <ul>
+      <li><b>Lambert-Beer:</b> absorbansi sebanding dengan konsentrasi dan tebal kuvet (A = epsilon x b x c). Transmitan menurun eksponensial.</li>
+      <li><b>Blanko reagen</b> mengoreksi warna dasar reagen, alat dinolkan pada panjang gelombang kerja.</li>
+      <li>Kadar sampel = (A sampel ÷ A standar) x kadar standar. Contoh: 0,30 ÷ 0,20 x 100 = 150 mg/dL.</li>
+      <li>Bahan kontrol dipakai tiap hari memantau ketelitian dan ketepatan. Kalibrator hanya menetapkan kurva atau faktor.</li>
+      <li>Lipemik berat: ultrasentrifugasi atau blanko sampel sesuai prosedur. Jangan sekadar menambah air tanpa faktor pengenceran.</li>
+    </ul>
+
+    <h4>Prinsip reaksi</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Pemeriksaan</th><th>Prinsip</th></tr></thead>
+      <tbody>
+        <tr><td>Glukosa GOD-PAP</td><td>Glukosa oksidase membentuk H2O2, peroksidase membentuk kuinoneimin merah muda</td></tr>
+        <tr><td>Kreatinin Jaffe</td><td>Asam pikrat suasana basa, kompleks jingga-merah</td></tr>
+        <tr><td>Asam urat enzimatik</td><td>Urikase (menghasilkan alantoin dan H2O2)</td></tr>
+        <tr><td>Protein total</td><td>Reaksi biuret</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Glukosa dan diabetes</h4>
+    <ul>
+      <li>Glukosa puasa <b>126 mg/dL atau lebih</b> pada pemeriksaan berulang memenuhi kriteria diabetes. Normal puasa di bawah 100 mg/dL.</li>
+      <li><b>HbA1c</b> mencerminkan kontrol 2 sampai 3 bulan (umur eritrosit sekitar 120 hari).</li>
+      <li>mg/dL ÷ 18 = mmol/L. Contoh: 180 mg/dL = 10 mmol/L.</li>
+    </ul>
+
+    <h4>Hati dan ginjal</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Temuan</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>ALT (SGPT)</td><td>Lebih spesifik hati (AST juga di jantung, otot, eritrosit)</td></tr>
+        <tr><td>Bilirubin direk naik, ALP naik, tinja dempul</td><td>Ikterus obstruktif (sumbatan empedu)</td></tr>
+        <tr><td>Bilirubin indirek dominan, enzim hati normal</td><td>Prehepatik (hemolisis)</td></tr>
+        <tr><td>ALP naik bermakna</td><td>Obstruksi empedu (pada anak tumbuh bisa fisiologis)</td></tr>
+        <tr><td>Albumin rendah pada sirosis</td><td>Sintesis albumin di hepatosit turun</td></tr>
+        <tr><td>Ureum dan kreatinin sama-sama tinggi</td><td>Gangguan fungsi ginjal (LFG turun). Kreatinin lebih spesifik</td></tr>
+        <tr><td>Ureum = BUN x 2,14</td><td>BUN 14 = ureum sekitar 30 mg/dL</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Lipid dan penanda jantung</h4>
+    <ul>
+      <li><b>LDL Friedewald</b> = total - HDL - TG ÷ 5. Contoh: 220 - 40 - 30 = 150 mg/dL. Tidak valid bila TG <b>400 mg/dL atau lebih</b> (ukur LDL langsung).</li>
+      <li><b>Troponin I atau T:</b> paling spesifik untuk infark miokard, naik 3 sampai 4 jam, tetap tinggi 7 sampai 14 hari.</li>
+      <li><b>CK-MB:</b> normal kembali 2 sampai 3 hari, berguna mendeteksi infark ulang.</li>
+      <li>Hemolisis: yang paling mencolok naik palsu adalah <b>kalium</b>.</li>
+    </ul>
+
+    <h4>Analisis gas darah</h4>
+    <p class="muted">Spesimen darah arteri dengan heparin. Sampel bebas gelembung, ditutup rapat, diperiksa kurang dari 30 menit. Gelembung udara: pCO2 turun, pO2 mendekati udara ruang (sekitar 150 mmHg). Semprit plastik tidak direndam es.</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hasil</th><th>Interpretasi</th></tr></thead>
+      <tbody>
+        <tr><td>pH 7,30; pCO2 60; HCO3 28</td><td>Asidosis respiratorik</td></tr>
+        <tr><td>pH 7,28; pCO2 28; HCO3 12</td><td>Asidosis metabolik, kompensasi respiratorik</td></tr>
+        <tr><td>pH 7,52; pCO2 28; HCO3 22</td><td>Alkalosis respiratorik (hiperventilasi)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="callout"><b>Cara cepat:</b> pH turun dengan pCO2 tinggi = respiratorik (retensi CO2). pH turun dengan HCO3 rendah = metabolik. pH naik dengan pCO2 turun = alkalosis respiratorik.</p>
+
+    <h3>Urinalisis, feses, cairan tubuh</h3>
+
+    <h4>Urin</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Temuan</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>Urin cokelat tua, busa kuning bila dikocok</td><td>Bilirubin</td></tr>
+        <tr><td>Carik celup protein (tetrabromofenol biru)</td><td>Paling peka albumin; protein Bence Jones dan globulin bisa tidak terdeteksi</td></tr>
+        <tr><td>Uji Benedict positif</td><td>Biru berubah hijau, kuning, oranye, merah bata = zat pereduksi (tidak spesifik glukosa)</td></tr>
+        <tr><td>Berat jenis tetap sekitar 1,010 sepanjang hari</td><td>Isostenuria: ginjal tak mampu memekatkan atau mengencerkan</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Sedimen: silinder dan kristal</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Temuan</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>Silinder eritrosit</td><td>Kelainan glomerulus (glomerulonefritis). Silinder terbentuk di tubulus</td></tr>
+        <tr><td>Silinder leukosit</td><td>Peradangan ginjal, mis. pielonefritis (sistitis tidak membentuk silinder)</td></tr>
+        <tr><td>Kristal amplop</td><td>Kalsium oksalat (urin asam atau netral)</td></tr>
+        <tr><td>Kristal tutup peti mati</td><td>Triple fosfat, urin basa (bakteri pemecah urea)</td></tr>
+        <tr><td>Urin asam</td><td>Kristal asam urat</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Feses</h4>
+    <ul>
+      <li>Telur cacing langsung (direct smear): emulsi feses dengan <b>NaCl 0,9%</b> di kaca objek lalu tutup kaca penutup.</li>
+      <li>Ziehl-Neelsen dipakai untuk BTA, bukan sediaan rutin feses.</li>
+    </ul>
+
+    <h4>Cairan serebrospinal (LCS)</h4>
+    <ul>
+      <li>Diperiksa segera, <b>paling lama 1 jam</b> (sel cepat lisis, glukosa turun, bakteri mati).</li>
+      <li>Tiga tabung berurutan: <b>tabung 1 kimia dan imunologi, tabung 2 mikrobiologi, tabung 3 hitung sel</b> (tabung 1 paling mungkin berdarah akibat tusukan).</li>
+    </ul>
+
+    <h4>Cairan efusi</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Ciri</th><th>Transudat</th><th>Eksudat</th></tr></thead>
+      <tbody>
+        <tr><td>Uji Rivalta (asam asetat encer)</td><td>Negatif</td><td>Positif (keruh seperti asap)</td></tr>
+        <tr><td>Berat jenis</td><td>Rendah</td><td>Di atas 1,018</td></tr>
+        <tr><td>Protein dan sel</td><td>Protein rendah</td><td>Protein tinggi, sel banyak (peradangan)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Sperma</h4>
+    <ul>
+      <li>Abstinensi <b>2 sampai 7 hari</b> (WHO).</li>
+      <li>Diantar kurang dari 1 jam, suhu dijaga 20 sampai 37 derajat Celsius (jangan didinginkan).</li>
+      <li>Ditampung lewat masturbasi ke wadah steril bermulut lebar. Jangan pakai kondom biasa (spermisida atau pelumas merusak sperma).</li>
+    </ul>
+
+    <h3>Bank darah</h3>
+
+    <h4>Penentuan golongan darah ABO</h4>
+    <p class="note"><b>Forward grouping</b> (cell grouping) = eritrosit pasien + antiserum anti-A dan anti-B. <b>Reverse grouping</b> = serum pasien + sel A dan sel B.</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Eritrosit + anti-A / anti-B</th><th>Serum + sel A / sel B</th><th>Golongan</th></tr></thead>
+      <tbody>
+        <tr><td>Aglutinasi anti-A saja</td><td>Tidak dengan sel A, aglutinasi dengan sel B</td><td>A</td></tr>
+        <tr><td>Tidak ada aglutinasi</td><td>Aglutinasi dengan sel A dan sel B</td><td>O</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Aglutinasi dengan anti-D = <b>Rhesus positif</b>.</li>
+      <li>Donor universal PRC = <b>O</b> (tanpa antigen A dan B). Resipien universal = <b>AB</b> (tanpa anti-A dan anti-B).</li>
+    </ul>
+
+    <h4>Uji silang serasi dan Coombs</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Uji</th><th>Isi</th></tr></thead>
+      <tbody>
+        <tr><td>Silang serasi mayor</td><td>Serum resipien + eritrosit donor. Tidak serasi = kontraindikasi transfusi</td></tr>
+        <tr><td>Silang serasi minor</td><td>Serum donor + eritrosit resipien (peran lebih kecil di praktik modern)</td></tr>
+        <tr><td>Autokontrol positif</td><td>Serum pasien bereaksi dengan eritrosit sendiri: autoantibodi</td></tr>
+        <tr><td>Coombs langsung (DAT)</td><td>Antibodi atau komplemen yang sudah menyelimuti eritrosit pasien in vivo</td></tr>
+        <tr><td>Coombs tidak langsung (IAT)</td><td>Antibodi bebas di serum, setelah inkubasi 37 derajat Celsius dengan sel reagen. Dipakai untuk skrining antibodi dan uji silang</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Komponen darah dan penyimpanan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Komponen</th><th>Suhu simpan</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td>Packed red cells (PRC)</td><td>2 sampai 6 derajat Celsius</td><td>Lemari pendingin darah</td></tr>
+        <tr><td>Konsentrat trombosit</td><td>20 sampai 24 derajat Celsius</td><td>Agitasi terus-menerus; tidak boleh didinginkan</td></tr>
+        <tr><td>Fresh frozen plasma (FFP)</td><td>Beku</td><td>Cairkan di penangas air 30 sampai 37 derajat Celsius lalu segera pakai</td></tr>
+        <tr><td>Kriopresipitat</td><td>Dibuat dari pencairan FFP pada 1 sampai 6 derajat Celsius</td><td>Kaya faktor VIII, fibrinogen, vWF, faktor XIII</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="callout"><b>Reaksi transfusi hemolitik akut</b> (demam, nyeri pinggang, urin merah, mis. pasien A diberi PRC B): <b>hentikan transfusi segera</b>, pertahankan akses vena dengan cairan, cocokkan identitas dan label kantong, lalu investigasi ke bank darah (DAT).</p>
+
+    <h3>Mikrobiologi</h3>
+
+    <h4>Pewarnaan dan hasilnya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Pewarnaan</th><th>Urutan reagen</th><th>Hasil</th></tr></thead>
+      <tbody>
+        <tr><td>Gram</td><td>Kristal violet, lugol (mordan), alkohol-aseton (pemucat), safranin (tandingan)</td><td>Gram positif ungu, Gram negatif merah</td></tr>
+        <tr><td>Ziehl-Neelsen</td><td>Karbol fuksin (dipanaskan), asam alkohol, metilen biru</td><td>BTA merah di latar biru</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Gram negatif merah karena kompleks kristal violet-iodin luruh oleh alkohol-aseton (peptidoglikan tipis, membran luar berlipid). Peptidoglikan tebal = Gram positif.</p>
+
+    <h4>Skala BTA (IUATLD/WHO)</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hasil</th><th>Temuan</th></tr></thead>
+      <tbody>
+        <tr><td>Scanty</td><td>1 sampai 9 BTA per 100 lapang pandang (tulis jumlah kuman)</td></tr>
+        <tr><td class="n">1+</td><td>10 sampai 99 BTA per 100 lapang pandang</td></tr>
+        <tr><td class="n">2+</td><td>1 sampai 10 BTA per lapang pandang, minimal 50 lapang pandang</td></tr>
+        <tr><td class="n">3+</td><td>Lebih dari 10 BTA per lapang pandang, minimal 20 lapang pandang</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Diagnosis awal terduga TB menurut program nasional: <b>Tes Cepat Molekuler (TCM)</b>. Mikroskopis dan biakan untuk pemantauan atau sesuai indikasi.</li>
+      <li>Biakan dan uji kepekaan <i>M. tuberculosis</i> memerlukan <b>BSL-3</b> (biosafety cabinet, ruang tekanan negatif).</li>
+    </ul>
+
+    <h4>Media dan kegunaannya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Media</th><th>Kegunaan</th></tr></thead>
+      <tbody>
+        <tr><td>MacConkey agar</td><td>Selektif bakteri Gram negatif, membedakan fermentasi laktosa (koloni merah muda = memfermentasi laktosa)</td></tr>
+        <tr><td>Mueller-Hinton agar</td><td>Uji kepekaan antibiotik difusi cakram Kirby-Bauer</td></tr>
+        <tr><td>TCBS agar</td><td>Selektif <i>Vibrio</i>; <i>V. cholerae</i> koloni kuning (memfermentasi sukrosa)</td></tr>
+        <tr><td>Lowenstein-Jensen</td><td>Biakan <i>Mycobacterium</i> (padat, berbasis telur, hijau malakit)</td></tr>
+        <tr><td>Sabouraud dekstrosa agar (SDA)</td><td>Jamur (asam, kaya glukosa, menekan bakteri)</td></tr>
+        <tr><td>TSIA</td><td>Uji fermentasi gula dan H2S (lihat di bawah)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Uji identifikasi bakteri</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Uji atau pola</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>Katalase (H2O2, gelembung O2)</td><td><i>Staphylococcus</i> positif, <i>Streptococcus</i> negatif</td></tr>
+        <tr><td>Kokus Gram positif bergerombol, katalase positif</td><td><i>Staphylococcus</i></td></tr>
+        <tr><td>Koagulase positif (plasma menggumpal)</td><td><i>Staphylococcus aureus</i> (S. epidermidis negatif)</td></tr>
+        <tr><td>TSIA: slant merah, butt kuning, endapan hitam</td><td>Hanya memfermentasi glukosa, produksi H2S; pola khas <i>Salmonella</i></td></tr>
+        <tr><td>TSIA: slant dan butt kuning</td><td>Laktosa/sukrosa ikut difermentasi</td></tr>
+        <tr><td>IMViC ++-- (indol +, MR +, VP -, sitrat -)</td><td><i>Escherichia coli</i></td></tr>
+        <tr><td>IMViC --++</td><td><i>Klebsiella</i>, <i>Enterobacter</i></td></tr>
+        <tr><td>Standar McFarland 0,5</td><td>Inokulum Kirby-Bauer, sekitar 1,5 x 10^8 CFU/mL</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Sterilisasi dan kultur darah</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Alat</th><th>Parameter</th></tr></thead>
+      <tbody>
+        <tr><td>Autoklaf (uap bertekanan)</td><td>121 °C, 15 menit, sekitar 15 psi (membunuh spora)</td></tr>
+        <tr><td>Oven panas kering</td><td>160 °C 2 jam (atau 170 °C 1 jam)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Kultur darah: darah diambil <b>sebelum</b> antibiotik; desinfeksi kulit, dua lokasi tusukan, teknik aseptik.</li>
+    </ul>
+
+    <h3>Parasitologi</h3>
+
+    <h4>Malaria</h4>
+    <ul>
+      <li>Sediaan <b>tebal</b>: sensitivitas tinggi, untuk menemukan parasit. Sediaan <b>tipis</b>: menentukan spesies. Keduanya Giemsa.</li>
+      <li>Sporozoit masuk lewat gigitan nyamuk <i>Anopheles</i> betina (menuju hati). Gametosit dihisap nyamuk dan menjadi ookista.</li>
+    </ul>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Spesies</th><th>Ciri di sediaan tipis</th></tr></thead>
+      <tbody>
+        <tr><td><i>P. falciparum</i></td><td>Cincin halus berinti ganda, satu eritrosit terinfeksi ganda, eritrosit tidak membesar, gametosit bentuk pisang</td></tr>
+        <tr><td><i>P. vivax</i></td><td>Eritrosit membesar dan pucat, titik Schuffner, trofozoit amoeboid</td></tr>
+        <tr><td><i>P. malariae</i></td><td>Bentuk pita, eritrosit tidak membesar</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Cacing dan protozoa usus</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Parasit</th><th>Ciri pembeda</th></tr></thead>
+      <tbody>
+        <tr><td><i>Ascaris lumbricoides</i> (telur fertil)</td><td>Bulat atau lonjong, dinding tebal berlapis albumin bergerigi, berisi sel telur</td></tr>
+        <tr><td><i>Trichuris trichiura</i></td><td>Telur bentuk tempayan (barrel) dengan sumbat jernih di kedua kutub</td></tr>
+        <tr><td>Cacing tambang</td><td>Telur lonjong dinding tipis jernih, 4 sampai 8 blastomer</td></tr>
+        <tr><td><i>Enterobius vermicularis</i></td><td>Telur lonjong satu sisi datar, berisi larva. Diagnosis: selotip perianal pagi sebelum mandi atau BAB</td></tr>
+        <tr><td><i>Taenia saginata / solium</i></td><td>Telur sama; bedakan dengan skoleks atau cabang uterus proglotid gravid</td></tr>
+        <tr><td><i>Strongyloides stercoralis</i></td><td>Larva rabditiform di tinja segar, telur tidak ditemukan</td></tr>
+        <tr><td><i>Entamoeba histolytica</i></td><td>Trofozoit menelan eritrosit (eritrofagositosis) = bentuk patogen. Tidak berflagel, gerak pseudopodia</td></tr>
+        <tr><td><i>Giardia lamblia</i></td><td>Trofozoit bentuk buah pir, dua inti (seperti wajah), flagel. Diare berlemak</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Metode pemeriksaan</h4>
+    <ul>
+      <li><b>Eosin + lugol</b> pada tinja langsung: eosin 2% jadi latar merah-oranye, lugol memperjelas inti dan glikogen kista protozoa.</li>
+      <li><b>Kato-Katz:</b> kuantitatif, telur per gram tinja untuk intensitas infeksi cacing.</li>
+      <li><b>Mikrofilaria</b> (<i>W. bancrofti</i>, <i>B. malayi</i>): darah malam hari sekitar pukul 22.00 sampai 02.00 (periodisitas nokturna).</li>
+    </ul>
+
+    <h3>Mikologi (jamur)</h3>
+
+    <h4>Pemeriksaan langsung dan pewarnaan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Metode</th><th>Fungsi atau hasil</th></tr></thead>
+      <tbody>
+        <tr><td>KOH 10%</td><td>Melarutkan keratin dan debris sehingga hifa dan spora terlihat; tidak mewarnai</td></tr>
+        <tr><td>Tinta India (LCS)</td><td>Ragi bulat bertunas dengan halo jernih (kapsul) di latar gelap: <i>Cryptococcus neoformans</i></td></tr>
+        <tr><td>Lactophenol cotton blue</td><td>Fenol mematikan jamur, asam laktat mengawetkan dan menjernihkan, cotton blue mewarnai kitin</td></tr>
+        <tr><td>Germ tube (serum, 37 °C, 2 sampai 3 jam)</td><td>Tonjolan seperti tabung tanpa penyempitan: <i>Candida albicans</i></td></tr>
+        <tr><td>Corn meal agar + Tween 80</td><td>Klamidospora bulat berdinding tebal di ujung pseudohifa: <i>C. albicans</i></td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Pengambilan dan biakan</h4>
+    <ul>
+      <li>Kerokan kulit: bersihkan lesi dengan alkohol 70%, kerok <b>tepi lesi yang aktif</b>. Obat antijamur sebelum pengambilan bisa memberi negatif palsu.</li>
+      <li>SDA: pH asam sekitar 5,6, dekstrosa sebagai energi. <b>Kloramfenikol</b> menghambat bakteri, sikloheksimid menekan jamur saprofit.</li>
+      <li>Dermatofita: inkubasi suhu ruang 25 sampai 30 derajat Celsius selama 2 sampai 4 minggu.</li>
+    </ul>
+
+    <h4>Ciri genus jamur</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Jamur</th><th>Ciri</th></tr></thead>
+      <tbody>
+        <tr><td><i>Trichophyton</i></td><td>Dermatofita yang menginfeksi kulit, rambut, dan kuku</td></tr>
+        <tr><td><i>Epidermophyton</i></td><td>Kulit dan kuku, tidak rambut. Makrokonidia gada berdinding halus, tanpa mikrokonidia</td></tr>
+        <tr><td><i>Microsporum</i></td><td>Kulit dan rambut, tidak kuku. Makrokonidia berdinding kasar</td></tr>
+        <tr><td><i>Malassezia furfur</i></td><td>Pitiriasis versikolor: bercak hipopigmentasi bersisik, hifa pendek bengkok + spora bulat bergerombol ("spaghetti and meatballs")</td></tr>
+        <tr><td><i>Aspergillus</i></td><td>Kepala konidia bulat, vesikel di ujung konidiofor, fialid, rantai konidia</td></tr>
+        <tr><td><i>Candida glabrata</i></td><td>Tidak membentuk germ tube maupun pseudohifa</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Dermatofita: hifa panjang bersekat dan bercabang. Candida dan Cryptococcus adalah ragi, tanpa konidiofor.</p>
+
+    <h3>Imunoserologi</h3>
+
+    <h4>Prinsip dan metode</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Metode</th><th>Poin kunci</th></tr></thead>
+      <tbody>
+        <tr><td>Aglutinasi vs presipitasi</td><td>Aglutinasi: antigen partikel (sel, lateks). Presipitasi: antigen larut</td></tr>
+        <tr><td>Lateks faktor rematoid (RF)</td><td>Mendeteksi autoantibodi (terutama IgM) terhadap Fc IgG; artritis reumatoid</td></tr>
+        <tr><td>Imunokromatografi (strip)</td><td>Garis kontrol (C) tidak muncul = <b>tidak valid</b>, ulangi dengan strip baru</td></tr>
+        <tr><td>ELISA sandwich (antigen)</td><td>Warna dan absorbansi makin tinggi = antigen makin banyak</td></tr>
+        <tr><td>Imunoassay sandwich (analit besar, mis. TSH)</td><td>Sinyal sebanding dengan kadar</td></tr>
+        <tr><td>Imunoassay kompetitif (analit kecil, mis. FT4)</td><td>Sinyal berbanding terbalik dengan kadar</td></tr>
+        <tr><td>Chemiluminescence</td><td>Mengukur cahaya dari reaksi kimia pada label (mis. akridinium), bukan absorbansi</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Fenomena yang bikin hasil salah</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Fenomena</th><th>Penyebab dan solusi</th></tr></thead>
+      <tbody>
+        <tr><td>Prozona (mis. RPR sifilis negatif palsu)</td><td>Antibodi berlebih menghambat gumpalan. Encerkan serum, hasil jadi reaktif</td></tr>
+        <tr><td>Postzona</td><td>Antigen berlebih</td></tr>
+        <tr><td>Efek hook dosis tinggi (tes hamil mola negatif, hCG sangat tinggi)</td><td>Antibodi jenuh sendiri-sendiri. Encerkan sampel, jadi positif</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Penanda serologi dan artinya</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Penanda</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>HBsAg reaktif</td><td>Terinfeksi hepatitis B (akut atau kronik)</td></tr>
+        <tr><td>HBsAg -, anti-HBs +, anti-HBc total -</td><td>Kekebalan karena vaksinasi (vaksin hanya berisi HBsAg)</td></tr>
+        <tr><td>Anti-HBs + bersama anti-HBc</td><td>Sembuh dari infeksi alami</td></tr>
+        <tr><td>HBeAg reaktif (hepatitis B kronik)</td><td>Replikasi virus aktif, penularan tinggi</td></tr>
+        <tr><td>VDRL / RPR</td><td>Non-treponemal (antibodi reagin, kardiolipin): skrining dan pemantauan terapi, bisa positif palsu</td></tr>
+        <tr><td>TPHA</td><td>Spesifik <i>Treponema</i>: konfirmasi sifilis</td></tr>
+        <tr><td>NS1 dengue</td><td>Terdeteksi sejak hari pertama, menurun setelah hari ke-5 sampai ke-7: deteksi dini</td></tr>
+        <tr><td>IgM dengue</td><td>Muncul setelah hari ke-4 sampai ke-5 (infeksi primer: IgM dulu)</td></tr>
+        <tr><td>IgG tinggi cepat, IgM rendah</td><td>Infeksi sekunder dengue</td></tr>
+        <tr><td>Widal</td><td>Antigen O = somatik (badan bakteri), antigen H = flagela <i>Salmonella</i>. Bermakna bila titer naik pada serum berpasangan</td></tr>
+        <tr><td>CRP</td><td>Penanda inflamasi akut atau infeksi bakteri</td></tr>
+        <tr><td>ASTO</td><td>Antibodi anti-streptolisin O: infeksi Streptococcus beta hemolitikus grup A (demam reumatik)</td></tr>
+        <tr><td>TSH tinggi, FT4 rendah</td><td>Hipotiroidisme primer (hipotiroid sentral: TSH rendah atau normal)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Strategi tiga tes HIV</h4>
+    <ul>
+      <li>Tiga reagen <b>berbeda</b>: R1 sensitivitas tinggi, R2 dan R3 spesifisitas tinggi.</li>
+      <li>R1, R2, dan R3 semuanya reaktif = dilaporkan <b>HIV positif</b>.</li>
+    </ul>
+
+    <h3>Sitohistoteknologi</h3>
+
+    <h4>Fiksasi</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hal</th><th>Ketentuan</th></tr></thead>
+      <tbody>
+        <tr><td>Fiksatif jaringan rutin</td><td><b>Formalin buffer netral 10%</b> (ikatan silang protein, mencegah autolisis)</td></tr>
+        <tr><td>Volume fiksatif</td><td>10 sampai 20 kali volume jaringan, jaringan terendam penuh</td></tr>
+        <tr><td>Apus Pap serviks</td><td>Segera fiksasi basah alkohol 95% sebelum kering (kering = artefak, inti rusak)</td></tr>
+        <tr><td>Fiksasi sitologi</td><td>Alkohol 95% lebih lazim untuk sediaan sitologi</td></tr>
+        <tr><td>BAJAH (FNAB) untuk Giemsa</td><td>Keringkan di udara. Papanicolaou butuh fiksasi basah alkohol</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Alur prosesing jaringan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th class="n">No</th><th>Tahap</th><th>Fungsi</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Fiksasi</td><td>Mengawetkan struktur jaringan</td></tr>
+        <tr><td class="n">2</td><td>Dehidrasi</td><td>Alkohol bertingkat (70%, 80%, 95%, absolut) mengeluarkan air tanpa membuat jaringan mengerut</td></tr>
+        <tr><td class="n">3</td><td>Penjernihan (clearing)</td><td>Xilol menggantikan alkohol, bercampur dengan parafin, jaringan tampak transparan</td></tr>
+        <tr><td class="n">4</td><td>Infiltrasi parafin</td><td>Parafin meresap ke jaringan</td></tr>
+        <tr><td class="n">5</td><td>Pengeblokan</td><td>Dicetak menjadi blok</td></tr>
+        <tr><td class="n">6</td><td>Pemotongan</td><td>Mikrotom, irisan 3 sampai 5 mikrometer</td></tr>
+        <tr><td class="n">7</td><td>Pewarnaan</td><td>Mis. Hematoksilin Eosin</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Dehidrasi harus sebelum clearing karena xilol tidak bercampur dengan air.</p>
+
+    <h4>Pewarnaan</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Pewarnaan</th><th>Hasil atau kegunaan</th></tr></thead>
+      <tbody>
+        <tr><td>Hematoksilin Eosin (HE)</td><td>Inti biru-ungu (hematoksilin, basa), sitoplasma dan kolagen merah muda (eosin, asam)</td></tr>
+        <tr><td>Papanicolaou</td><td>Sediaan sitologi, mis. skrining kanker serviks</td></tr>
+        <tr><td>Congo red</td><td>Amiloid merah jingga, hijau apel di mikroskop polarisasi</td></tr>
+        <tr><td>PAS</td><td>Glikogen, musin, dinding jamur</td></tr>
+        <tr><td>Masson trichrome</td><td>Kolagen</td></tr>
+        <tr><td>Perls</td><td>Hemosiderin (besi)</td></tr>
+        <tr><td>Ziehl-Neelsen</td><td>BTA</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Masalah teknis dan potong beku</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Masalah</th><th>Penyebab</th></tr></thead>
+      <tbody>
+        <tr><td>Bagian tengah blok lunak, keruh keputihan, irisan hancur; tepi baik</td><td>Dehidrasi tidak sempurna (sisa air menghalangi xilol dan parafin)</td></tr>
+        <tr><td>Jaringan keras dan getas</td><td>Dehidrasi atau penjernihan terlalu lama, parafin terlalu panas</td></tr>
+        <tr><td>Irisan bergaris memanjang searah potongan</td><td>Mata pisau mikrotom bergerigi (diasah atau ganti bagian pisau)</td></tr>
+        <tr><td>Irisan terlalu tebal</td><td>Tampak gelap, sel bertumpuk</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Potong beku</b> (kriostat): konsultasi intraoperasi yang butuh diagnosis cepat, hasil dalam hitungan menit.</li>
+      <li><b>BAJAH</b> menghasilkan sel atau kelompok sel (sitologi), bukan arsitektur jaringan.</li>
+    </ul>
+
+    <h3>Diagnostik molekuler</h3>
+
+    <h4>DNA dan RNA</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th></th><th>DNA</th><th>RNA</th></tr></thead>
+      <tbody>
+        <tr><td>Gula</td><td>Deoksiribosa</td><td>Ribosa</td></tr>
+        <tr><td>Basa</td><td>A, T, G, C (timin)</td><td>Urasil menggantikan timin</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Ekstraksi dan kemurnian</h4>
+    <ul>
+      <li>Ekstraksi kolom silika: <b>lisis sel, pengikatan ke matriks, pencucian, elusi</b>.</li>
+      <li>Rasio <b>A260/A280</b>: DNA murni sekitar 1,8; RNA murni sekitar 2,0. Rasio jauh lebih rendah = kontaminasi protein atau fenol.</li>
+    </ul>
+
+    <h4>Tahap PCR</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Tahap</th><th>Suhu</th><th>Yang terjadi</th></tr></thead>
+      <tbody>
+        <tr><td>Denaturasi</td><td class="n">94 sampai 95 °C</td><td>DNA untai ganda dipisah</td></tr>
+        <tr><td>Annealing</td><td class="n">50 sampai 65 °C</td><td>Primer menempel</td></tr>
+        <tr><td>Ekstensi</td><td class="n">72 °C</td><td>Polimerase memperpanjang untai</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Taq polimerase</b> dari <i>Thermus aquaticus</i>, tahan panas sehingga tidak rusak saat denaturasi.</li>
+      <li><b>RT-PCR</b> (virus RNA) butuh reverse transcriptase untuk mengubah RNA menjadi cDNA sebelum diamplifikasi.</li>
+      <li><b>Real-time PCR:</b> nilai Ct = siklus saat sinyal fluoresensi melewati ambang. Ct kecil (mis. 18) = target banyak; Ct besar (mis. 35) = target sedikit.</li>
+      <li><b>Nested PCR:</b> dua tahap, dua pasang primer; lebih sensitif dan spesifik, risiko kontaminasi lebih besar.</li>
+      <li><b>TCM TB:</b> PCR real-time, mendeteksi DNA <i>M. tuberculosis</i> sekaligus resistansi rifampisin (mutasi gen rpoB).</li>
+    </ul>
+
+    <h4>Kontrol dan pencegahan kontaminasi</h4>
+    <ul>
+      <li>Kontrol negatif tanpa templat (NTC) positif = <b>run tidak valid</b> (kontaminasi). Ulangi dengan reagen baru dan telusuri sumbernya.</li>
+      <li>Alur kerja <b>satu arah</b> dari ruang pra-PCR ke pasca-PCR dengan ruang terpisah. Alat dan jas tidak kembali ke area awal.</li>
+    </ul>
+
+    <h4>Elektroforesis dan sekuensing</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hal</th><th>Poin</th></tr></thead>
+      <tbody>
+        <tr><td>Arah gerak DNA di gel agarosa</td><td>Ke kutub positif (anoda), fragmen kecil bergerak lebih cepat</td></tr>
+        <tr><td>DNA ladder</td><td>Memperkirakan ukuran fragmen sampel</td></tr>
+        <tr><td>Visualisasi</td><td>Etidium bromida atau SYBR Safe, disinari UV atau cahaya biru</td></tr>
+        <tr><td>Sekuensing Sanger</td><td>Terminasi rantai oleh ddNTP berlabel (tanpa gugus 3'-OH)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Kendali mutu dan K3</h3>
+
+    <h4>Pemantapan mutu</h4>
+    <ul>
+      <li><b>PMI</b> (internal): dilakukan lab sendiri tiap hari dengan bahan kontrol. <b>PME</b> (eksternal): penyelenggara luar membandingkan hasil antar laboratorium.</li>
+      <li><b>Levey-Jennings:</b> sumbu X waktu, sumbu Y nilai kontrol; garis tengah mean, batas ±1, ±2, ±3 SD. Membantu melihat shift atau trend.</li>
+      <li><b>Akurasi:</b> kedekatan dengan nilai sebenarnya (bias). <b>Presisi:</b> keterulangan (diukur CV). Rata-rata dekat target tapi sebaran lebar = akurasi baik, presisi buruk.</li>
+      <li><b>Kalibrasi:</b> menyesuaikan pembacaan alat dengan standar bernilai diketahui. Tidak menggantikan kontrol mutu.</li>
+      <li><b>TEa</b> (total allowable error): batas kesalahan total (acak dan sistematik) yang masih dapat diterima.</li>
+      <li>Validasi hasil sebelum lapor: kontrol mutu lulus, identitas cocok, hasil wajar terhadap data klinis atau nilai rujukan, bandingkan hasil sebelumnya (delta check).</li>
+    </ul>
+
+    <h4>Aturan Westgard</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Aturan</th><th>Arti</th><th>Jenis galat</th></tr></thead>
+      <tbody>
+        <tr><td>1-2s</td><td>Satu nilai lewat ±2 SD</td><td>Peringatan saja, cek aturan lain</td></tr>
+        <tr><td>1-3s</td><td>Satu nilai lewat ±3 SD</td><td>Acak, run ditolak</td></tr>
+        <tr><td>2-2s</td><td>Dua nilai berturut-turut lewat 2 SD di sisi yang sama</td><td>Sistematik, run ditolak</td></tr>
+        <tr><td>R-4s</td><td>Selisih dua kontrol dalam satu run lebih dari 4 SD (satu di atas +2 SD, satu di bawah -2 SD)</td><td>Acak, run ditolak</td></tr>
+        <tr><td>4-1s</td><td>Empat nilai berturut-turut lewat 1 SD di sisi yang sama</td><td>Sistematik, run ditolak</td></tr>
+        <tr><td>10x</td><td>Sepuluh nilai berturut-turut di sisi mean yang sama</td><td>Sistematik (shift atau trend), run ditolak</td></tr>
+      </tbody>
+    </table></div>
+    <p class="callout"><b>Jebakan:</b> 2-2s harus di sisi yang sama; kalau satu +2,4 SD dan satu -2,2 SD dalam satu run itu R-4s. Hanya 1-2s tanpa aturan lain terlanggar = run boleh diterima.</p>
+
+    <h4>Nilai kritis dan etika</h4>
+    <ul>
+      <li>Hasil kritis (mis. kalium 7,2 mmol/L): <b>segera hubungi</b> dokter atau perawat penanggung jawab, minta read-back, catat waktu dan penerimanya. Jangan ditunda.</li>
+      <li>Hasil pasien adalah rahasia medis: tidak diberikan lewat telepon ke kerabat. Arahkan lewat prosedur ke pasien atau pihak berwenang.</li>
+    </ul>
+
+    <h4>Keselamatan kerja dan limbah</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Warna kantong</th><th>Limbah</th></tr></thead>
+      <tbody>
+        <tr><td>Kuning</td><td>Infeksius</td></tr>
+        <tr><td>Ungu</td><td>Sitotoksik</td></tr>
+        <tr><td>Merah</td><td>Radioaktif</td></tr>
+        <tr><td>Cokelat</td><td>Farmasi atau kimia</td></tr>
+        <tr><td>Hitam</td><td>Nonmedis</td></tr>
+        <tr><td>Wadah tahan tusuk</td><td>Benda tajam (jarum)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Jarum bekas: <b>langsung dibuang tanpa ditutup kembali</b> ke wadah tahan tusuk (menutup kembali = penyebab terbanyak tertusuk).</li>
+      <li><b>Tertusuk jarum:</b> cuci luka dengan air mengalir dan sabun, jangan menghisap atau memencet kuat, lalu lapor untuk profilaksis pascapajanan.</li>
+      <li><b>Tumpahan darah:</b> pakai APD, tutup dengan kertas penyerap, tuang desinfektan dari tepi ke tengah, tunggu waktu kontak, bersihkan, buang sebagai limbah infeksius.</li>
+      <li>Kultur <i>M. tuberculosis</i>: BSL-3. BSL-1 untuk agen yang tidak menimbulkan penyakit pada orang sehat, BSL-2 untuk risiko sedang.</li>
+    </ul>
+
+    <h3>Manajemen mutu dan pelayanan lab</h3>
+
+    <h4>Standar dan dokumen</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hal</th><th>Poin</th></tr></thead>
+      <tbody>
+        <tr><td>ISO 15189</td><td>Persyaratan mutu dan kompetensi laboratorium medis</td></tr>
+        <tr><td>ISO/IEC 17025</td><td>Laboratorium pengujian dan kalibrasi umum</td></tr>
+        <tr><td>ISO 14001 / ISO 27001</td><td>Manajemen lingkungan / keamanan informasi</td></tr>
+        <tr><td>Hierarki dokumen mutu</td><td>Manual mutu, prosedur (SPO), instruksi kerja, formulir/rekaman</td></tr>
+        <tr><td>SPO versi lama setelah revisi</td><td>Ditarik dari area kerja; arsip diberi tanda tidak berlaku (obsolete)</td></tr>
+        <tr><td>PDCA</td><td>Plan, Do, Check, Act (siklus berulang)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Konsep mutu</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Istilah</th><th>Arti</th></tr></thead>
+      <tbody>
+        <tr><td>Tindakan korektif</td><td>Menangani penyebab ketidaksesuaian yang sudah terjadi agar tidak berulang</td></tr>
+        <tr><td>Tindakan pencegahan</td><td>Menghilangkan penyebab potensial sebelum terjadi</td></tr>
+        <tr><td>Audit internal</td><td>Menilai kesesuaian dengan sistem mutu dan mencari peluang perbaikan, bukan menghukum individu</td></tr>
+        <tr><td>Verifikasi</td><td>Untuk metode komersial yang sudah divalidasi pabrik dan dipakai tanpa modifikasi (buktikan kinerja sesuai klaim)</td></tr>
+        <tr><td>Validasi</td><td>Untuk metode buatan sendiri atau yang dimodifikasi</td></tr>
+        <tr><td>Turn around time (TAT)</td><td>Waktu sejak permintaan atau spesimen diterima sampai hasil dilaporkan</td></tr>
+        <tr><td>FEFO</td><td>Reagen yang kedaluwarsa lebih dulu dipakai lebih dulu</td></tr>
+        <tr><td>LIS</td><td>Mengelola data pasien, permintaan, hasil, pelaporan, dan keterlacakan</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Rujukan dan perawatan alat</h4>
+    <ul>
+      <li>Spesimen rujukan: pastikan laboratorium rujukan <b>kompeten</b>, hasil <b>terlacak</b> ke pasien, identitas spesimen lengkap.</li>
+      <li>Sentrifus: tabung berhadapan dengan bobot seimbang. Tidak seimbang = getaran merusak alat, tabung pecah, aerosol infeksius.</li>
+      <li>Lensa imersi 100x: bersihkan minyak segera dengan kertas lensa kering (atau sedikit pelarut khusus).</li>
+    </ul>
+
+    <h3>Toksikologi klinik</h3>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Topik</th><th>Poin</th></tr></thead>
+      <tbody>
+        <tr><td>Narkoba urin (strip imunokromatografi)</td><td>Uji skrining (positif presumtif, ada reaksi silang). Konfirmasi dengan GC-MS atau LC-MS/MS</td></tr>
+        <tr><td>Cut-off</td><td>Positif bila kadar mencapai atau melebihi ambang. Di bawah ambang = negatif, bukan berarti zat tidak ada</td></tr>
+        <tr><td>Pseudoefedrin (obat flu) positif amfetamin</td><td>Kemungkinan reaksi silang, konfirmasi GC-MS</td></tr>
+        <tr><td>Organofosfat (hipersalivasi, miosis, kejang otot)</td><td>Aktivitas kolinesterase darah <b>menurun</b></td></tr>
+        <tr><td>Keracunan CO (SpO2 oksimeter nadi tampak normal)</td><td>Karboksihemoglobin dengan CO-oksimeter</td></tr>
+        <tr><td>Timbal</td><td>Darah utuh (whole blood) dengan antikoagulan sesuai metode, bukan serum</td></tr>
+        <tr><td>Kadar alkohol darah</td><td>Desinfeksi kulit dengan non-alkohol (mis. povidon iodin), tabung ditutup rapat</td></tr>
+        <tr><td>Chain of custody</td><td>Dokumentasi berkesinambungan siapa memegang spesimen dari pengambilan sampai pelaporan</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Kebijakan kesehatan</h3>
+
+    <h4>Enam sasaran keselamatan pasien (Permenkes 11/2017)</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th class="n">No</th><th>Sasaran</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Mengidentifikasi pasien dengan benar</td></tr>
+        <tr><td class="n">2</td><td>Meningkatkan komunikasi efektif (tulis, baca ulang atau read back, konfirmasi)</td></tr>
+        <tr><td class="n">3</td><td>Meningkatkan keamanan obat yang harus diwaspadai (high alert, mis. KCl pekat: simpan terpisah dan beri label)</td></tr>
+        <tr><td class="n">4</td><td>Memastikan lokasi, prosedur, dan pasien yang benar pada pembedahan</td></tr>
+        <tr><td class="n">5</td><td>Mengurangi risiko infeksi akibat perawatan kesehatan</td></tr>
+        <tr><td class="n">6</td><td>Mengurangi risiko cedera pasien akibat terjatuh</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Mempercepat waktu tunggu hasil (TAT) bukan sasaran keselamatan pasien, itu indikator mutu layanan.</p>
+
+    <h4>Program dan undang-undang</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Hal</th><th>Isi</th></tr></thead>
+      <tbody>
+        <tr><td>5 momen cuci tangan WHO</td><td>Sebelum menyentuh pasien; sebelum tindakan bersih atau aseptik; setelah berisiko terpapar cairan tubuh; setelah menyentuh pasien; setelah menyentuh lingkungan sekitar pasien</td></tr>
+        <tr><td>CERDIK</td><td>Cek kesehatan berkala, Enyahkan asap rokok, Rajin aktivitas fisik, Diet sehat kalori seimbang, Istirahat cukup, Kelola stres</td></tr>
+        <tr><td>PHBS rumah tangga</td><td>Cuci tangan dengan air bersih dan sabun, jamban sehat, tidak merokok di dalam rumah</td></tr>
+        <tr><td>JKN</td><td>Diselenggarakan BPJS Kesehatan (BPJS Ketenagakerjaan mengelola jaminan kerja)</td></tr>
+        <tr><td>UU 17/2023</td><td>Kesehatan (omnibus, mencabut 11 UU: UU 36/2009 Kesehatan, UU 36/2014 Tenaga Kesehatan, UU 44/2009 Rumah Sakit, dll)</td></tr>
+        <tr><td>UU lain yang sering jadi pengecoh</td><td>UU ASN 20/2023, UU SJSN 40/2004, UU BPJS 24/2011, UU Narkotika 35/2009</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Rumus hitungan lab</h3>
+    <p class="note">Rumus ini keluar sebagai soal hitungan, angkanya diacak tiap main. Hafalkan rumusnya, lalu latih lewat mode hitungan.</p>
+
+    <h4>Indeks eritrosit</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Indeks</th><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>MCV (fL)</td><td>Ht (%) x 10 ÷ eritrosit (juta/µL)</td><td>30 x 10 ÷ 4,5 = 66,7 fL</td></tr>
+        <tr><td>MCH (pg)</td><td>Hb (g/dL) x 10 ÷ eritrosit (juta/µL)</td><td>9 x 10 ÷ 4,5 = 20 pg</td></tr>
+        <tr><td>MCHC (g/dL)</td><td>Hb x 100 ÷ Ht (%)</td><td>9 x 100 ÷ 30 = 30 g/dL</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Normal umum: MCV 80 sampai 100 fL, MCH sekitar 27 sampai 31 pg, MCHC 32 sampai 36 g/dL (di bawahnya hipokrom). Hanya MCHC yang tidak memakai jumlah eritrosit.</p>
+
+    <h4>LDL Friedewald</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>LDL = kolesterol total - HDL - TG ÷ 5</td><td>220 - 40 - 150 ÷ 5 = 220 - 40 - 30 = 150 mg/dL</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Hanya boleh dipakai bila TG di bawah 400 mg/dL; sampel puasa. Jebakan: lupa membagi TG dengan 5.</p>
+
+    <h4>Koefisien variasi (CV)</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>CV% = SD ÷ rerata x 100%</td><td>SD 4 mg/dL, rerata 100 mg/dL = 4%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">CV menggambarkan presisi: makin kecil CV, makin teliti.</p>
+
+    <h4>Pengenceran</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Kasus</th><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>Volume stok yang dipipet</td><td>C1 x V1 = C2 x V2</td><td>Stok 200, buat 50 mg/dL 20 mL: V1 = 50 x 20 ÷ 200 = 5 mL</td></tr>
+        <tr><td>Volume pelarut</td><td>V2 - V1</td><td>20 - 5 = 15 mL akuades</td></tr>
+        <tr><td>Hasil terbaca setelah diencerkan f kali (1 bagian + (f-1) pelarut)</td><td>Baca x f</td><td>Diencerkan 5 kali, terbaca 45 = 225 mg/dL</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Jebakan: mengalikan dengan (f - 1) alih-alih f.</p>
+
+    <h4>Konversi glukosa</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Arah</th><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>mg/dL ke mmol/L</td><td>Bagi 18</td><td>180 ÷ 18 = 10 mmol/L</td></tr>
+        <tr><td>mmol/L ke mg/dL</td><td>Kali 18</td><td>5,5 x 18 = 99 mg/dL</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Kamar hitung Improved Neubauer</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Sel</th><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>Leukosit (pengenceran 20 kali, 4 bidang besar x 1 mm², tinggi 0,1 mm)</td><td>Volume 0,4 µL; N x 20 ÷ 0,4 = N x 50</td><td>160 x 50 = 8.000 sel/µL</td></tr>
+        <tr><td>Eritrosit (pengenceran 200 kali, 5 bidang sedang x 0,04 mm²)</td><td>Volume 0,02 µL; N x 200 ÷ 0,02 = N x 10.000</td><td>450 x 10.000 = 4.500.000 sel/µL (4,5 juta)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Klirens kreatinin</h4>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Rumus</th><th>Contoh</th></tr></thead>
+      <tbody>
+        <tr><td>Klirens (mL/menit) = (kreatinin urin x volume urin) ÷ (kreatinin serum x 1.440)</td><td>Urin 60 mg/dL, volume 2.160 mL, serum 1,2 mg/dL: (60 x 2.160) ÷ (1,2 x 1.440) = 75 mL/menit</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">1.440 adalah jumlah menit dalam 24 jam.</p>
+
+    <h4>Aturan Westgard pada soal hitungan</h4>
+    <p>Soal memberi rerata, SD, dan 10 hasil kontrol terakhir. Ubah tiap hasil menjadi jarak dari rerata dalam satuan SD, lalu cek aturannya dari nilai terakhir.</p>
+    <div class="tblwrap"><table>
+      <thead><tr><th>Pola nilai terakhir</th><th>Aturan</th></tr></thead>
+      <tbody>
+        <tr><td>Lewat 3 SD</td><td>1-3s</td></tr>
+        <tr><td>Dua terakhir lewat 2 SD, sisi sama</td><td>2-2s</td></tr>
+        <tr><td>Empat terakhir lewat 1 SD, sisi sama</td><td>4-1s</td></tr>
+        <tr><td>Sepuluh terakhir di sisi rerata yang sama</td><td>10x</td></tr>
+        <tr><td>Hanya satu nilai lewat 2 SD, tanpa pola lain</td><td>Cuma peringatan 1-2s, run diterima</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Batas 2 SD = rerata ± 2 x SD. Contoh: rerata 100, SD 4, batas 2 SD adalah 92 sampai 108; batas 3 SD adalah 88 sampai 112.</p>
+  </section>
