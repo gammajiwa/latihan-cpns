@@ -1,0 +1,17 @@
+{
+  "name": "Latihan CPNS: SKD dan SKB Analis Lab",
+  "short_name": "Latihan CPNS",
+  "description": "Latihan soal SKD dan SKB CPNS lengkap dengan pembahasan, bisa offline.",
+  "lang": "id",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef1f5",
+  "theme_color": "#b3202f",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

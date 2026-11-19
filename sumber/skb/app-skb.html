@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan SKB Analis Lab</title>
+<!--__HEAD__-->
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <a class="home" href="./" title="Kembali ke pilihan tes"><img src="icon.svg" width="34" height="34" alt="Pilih tes"></a>
+      <div><h1>Latihan SKB Analis Lab</h1><p><a class="switch" href="./">‹ Ganti tes</a> · Pranata Laboratorium Kesehatan</p></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="belajar" aria-selected="true">Belajar</button>
+      <button class="tab" role="tab" data-tab="latihan" aria-selected="false">Latihan</button>
+      <button class="tab" role="tab" data-tab="contekan" aria-selected="false">Ringkasan</button>
+      <button class="tab" role="tab" data-tab="tips" aria-selected="false">Tips</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="v-belajar">
+    <div class="intro">
+      <h2>Belajar per bidang</h2>
+      <p>Pilih bidang, baca tanya-jawab dan penjelasannya, lalu tekan tombol latihan di bawahnya.</p>
+    </div>
+    <div class="card guide">
+      <b>Baru mulai? Ikuti urutan ini:</b>
+      <ol>
+        <li>Ketuk salah satu bidang di bawah, baca soal, jawaban, dan penjelasannya.</li>
+        <li>Kalau sudah paham, tekan <b>Latihan 10 soal materi ini</b>.</li>
+        <li>Seminggu 2 kali, buka tab <b>Latihan</b> dan coba <b>Simulasi SKB lengkap</b>. Rapornya menunjukkan bidang yang masih lemah.</li>
+      </ol>
+    </div>
+    <div id="belajar-list"></div>
+  </section>
+
+  <section id="v-topik" hidden>
+    <div><button class="btn sm" id="t-back" type="button">‹ Daftar bidang</button></div>
+    <div class="intro"><span class="chip" id="t-sec" style="align-self:flex-start">SKB</span><h2 id="t-judul"></h2><p class="muted" id="t-info"></p></div>
+    <button class="btn primary big" id="t-latihan" type="button">Latihan 10 soal materi ini</button>
+    <label class="toggle card" for="t-tutup"><input type="checkbox" id="t-tutup"><span><b>Tutup jawaban</b><br><span class="muted">Coba jawab di kepala dulu, lalu ketuk “Lihat jawaban” di tiap soal.</span></span></label>
+    <div id="t-list" class="tlist"></div>
+    <button class="btn" id="t-more" type="button" hidden>Tampilkan contoh soal lain</button>
+    <button class="btn primary big" id="t-latihan2" type="button">Latihan 10 soal materi ini</button>
+  </section>
+
+  <section id="v-menu" hidden>
+    <div class="intro">
+      <h2>Latihan SKB Pranata Laboratorium Kesehatan</h2>
+      <p>SKB (Seleksi Kompetensi Bidang) menguji ilmu teknis analis lab. Soal diambil acak dari bank soal, soal hitungan lab dibuat ulang dengan angka baru tiap main, dan soal yang jarang muncul didahulukan.</p>
+    </div>
+    <div class="modes" id="modes"></div>
+    <label class="toggle card" for="opt-belajar">
+      <input type="checkbox" id="opt-belajar">
+      <span><b>Mode belajar</b><br><span class="muted">Pembahasan langsung muncul tiap selesai jawab, tanpa timer. Matikan kalau mau simulasi kayak ujian beneran.</span></span>
+    </label>
+    <div class="card sub">
+      <h3 style="margin-top:0">Latihan per bidang</h3>
+      <p class="muted">Mau latihan satu bidang saja? Buka tab Belajar, pilih bidangnya, lalu tekan “Latihan 10 soal materi ini”.</p>
+      <div><button class="btn" id="b-ke-belajar" type="button">Buka tab Belajar</button></div>
+    </div>
+    <div class="card sub">
+      <h3 style="margin-top:0">Ulangi soal yang pernah salah</h3>
+      <p class="muted" id="salah-info"></p>
+      <div class="row">
+        <button class="btn primary" id="b-salah" type="button">Latihan soal yang salah</button>
+        <button class="btn" id="b-salah-reset" type="button">Kosongkan daftar</button>
+      </div>
+      <p class="note" id="salah-confirm" hidden></p>
+    </div>
+    <div class="card sub" id="riwayat-card" hidden>
+      <h3 style="margin-top:0">Riwayat nilai</h3>
+      <div class="tblwrap"><table id="riwayat"></table></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Tentang SKB</h3>
+      <ul style="margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px">
+        <li>SKB ikut kalau lolos passing grade SKD. Biasanya pakai CAT BKN dengan materi teknis sesuai jabatan.</li>
+        <li>Jenjang <b>Terampil</b> untuk lulusan D3, jenjang <b>Ahli Pertama</b> untuk lulusan D4/S1. Materinya sama, Ahli Pertama lebih dalam di mutu, manajemen, dan molekuler.</li>
+        <li>Nilai akhir umumnya gabungan 40% SKD dan 60% SKB, lalu diranking per formasi. Jadi SKB porsinya lebih besar.</li>
+        <li>Jumlah soal, waktu, dan tes tambahan (praktik/wawancara) bisa beda tiap instansi. Cek pengumuman resmi di <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">sscasn.bkn.go.id</a> dan instansi tujuan.</li>
+      </ul>
+      <h4>Materi pokok resmi SKB CAT: Pranata Laboratorium Kesehatan Ahli Pertama</h4>
+      <div class="cols" style="margin-top:8px">
+        <div><b>Kompetensi generik</b><ol style="margin:6px 0 0;padding-left:20px">
+          <li>Pengambilan, penanganan, pengiriman, dan penyimpanan spesimen laboratorium kesehatan</li>
+          <li>Audit mutu internal (IQC) dan verifikasi pengendalian mutu internal laboratorium</li>
+          <li>Quality management laboratorium</li>
+          <li>Sistem pelayanan laboratorium</li>
+        </ol></div>
+        <div><b>Kompetensi spesifik</b><ol style="margin:6px 0 0;padding-left:20px">
+          <li>Pemeriksaan darah lengkap dan hemostasis</li>
+          <li>Urinalisis, pemeriksaan feses lengkap, pemeriksaan kimia darah, dan cairan tubuh</li>
+          <li>Pemeriksaan imunologi dasar</li>
+          <li>Pemeriksaan mikroskopik preparat, BTA, malaria, protozoa, helmintologi, dan mikologi</li>
+          <li>Pemeriksaan sito-histoteknologi (prosesing jaringan, sitopatologi, mikrotom, potong beku jaringan)</li>
+          <li>Diagnostik molekuler (isolasi, amplifikasi, dan identifikasi asam nukleat)</li>
+        </ol></div>
+      </div>
+      <p class="note" style="margin-top:8px">Sumber: Lampiran Surat Menteri PANRB Nomor B/5457/M.SM.01.00/2024 tentang Materi Pokok Soal SKB dengan CAT (CPNS TA 2024), halaman 91. Untuk jenjang Terampil, lampiran itu cuma merujuk ke kamus kompetensi tanpa rincian topik. Kisi-kisi CPNS 2021 untuk Terampil menekankan pengambilan, penerimaan, dan pengiriman spesimen, sediaan hematologi dan mikrobiologi, serta perawatan alat. Semua topik itu ada di bank soal ini.</p>
+      <p class="note" id="bank-info" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+  <section id="v-quiz" hidden>
+    <div class="qbar">
+      <button class="btn sm" id="b-keluar" type="button">‹ Menu</button>
+      <span class="chip" id="q-sec"></span>
+      <span class="pos" id="q-pos"></span>
+      <span class="timer" id="q-timer" aria-live="off"></span>
+    </div>
+    <div class="card confirm" id="exit-confirm" hidden>
+      <p>Keluar dari latihan ini? Jawaban yang sudah diisi tidak disimpan dan tidak masuk riwayat.</p>
+      <div class="row">
+        <button class="btn primary" id="x-yes" type="button">Ya, keluar ke menu</button>
+        <button class="btn" id="x-finish" type="button">Selesai dan lihat nilai</button>
+        <button class="btn" id="x-no" type="button">Lanjut ngerjain</button>
+      </div>
+    </div>
+    <article class="card">
+      <p class="qtext" id="q-text"></p>
+      <div class="opts" id="q-opts"></div>
+      <div class="fb" id="q-fb" hidden></div>
+    </article>
+    <div class="qnav">
+      <button class="btn" id="b-prev" type="button">Sebelumnya</button>
+      <button class="btn" id="b-flag" type="button" aria-pressed="false">Ragu-ragu</button>
+      <button class="btn primary" id="b-next" type="button">Berikutnya</button>
+    </div>
+    <div class="card confirm" id="confirm" hidden>
+      <p id="confirm-text"></p>
+      <div class="row">
+        <button class="btn primary" id="c-yes" type="button">Ya, selesai dan lihat nilai</button>
+        <button class="btn" id="c-no" type="button">Lanjut ngerjain</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="gridhead"><b>Nomor soal</b><button class="btn" id="b-finish" type="button">Selesai</button></div>
+      <div id="grid"></div>
+      <div class="legend"><span><i class="l-done"></i>Sudah dijawab</span><span><i class="l-flag"></i>Ragu-ragu</span><span><i></i>Belum dijawab</span></div>
+    </div>
+  </section>
+
+  <section id="v-hasil" hidden>
+    <div class="card summary" id="h-sum"></div>
+    <div class="card sub">
+      <h3 style="margin-top:0">Rapor per bidang</h3>
+      <div class="tblwrap"><table id="h-rapor"></table></div>
+      <div id="h-saran"></div>
+    </div>
+    <div class="row noprint">
+      <button class="btn primary" id="h-again" type="button">Ulangi dengan soal baru</button>
+      <button class="btn" id="h-menu" type="button">Kembali ke menu</button>
+    </div>
+    <h3>Pembahasan</h3>
+    <label class="toggle noprint" for="h-wrong"><input type="checkbox" id="h-wrong"><span>Tampilkan yang salah saja</span></label>
+    <div id="h-review" style="display:flex;flex-direction:column;gap:10px"></div>
+  </section>
+
+<!--__CONTEKAN__-->
+<!--__TIPS__-->
+  <section id="v-print" hidden></section>
+</main>
+
+<script>
+/*__BANKS__*/
+</script>
+<script>
+/* ===================== KONFIGURASI ===================== */
+const TOPIK = {
+  praanalitik:"Pra-analitik dan spesimen", hematologi:"Hematologi dan hemostasis", kimia:"Kimia klinik", urinalisis:"Urinalisis, feses, cairan tubuh",
+  bankdarah:"Bank darah", mikrobiologi:"Mikrobiologi", parasitologi:"Parasitologi", mikologi:"Mikologi (jamur)", imunoserologi:"Imunoserologi",
+  sitohisto:"Sitohistoteknologi", molekuler:"Diagnostik molekuler", mutu:"Kendali mutu dan K3", manajemen:"Manajemen mutu dan pelayanan lab",
+  toksikologi:"Toksikologi klinik", kebijakan:"Kebijakan kesehatan", hitung:"Hitungan lab"
+};
+/* Komposisi simulasi per bidang, mengikuti materi pokok resmi PLK (PANRB B/5457/2024) */
+const BP = {
+  100:{praanalitik:10, hematologi:13, kimia:12, urinalisis:5, bankdarah:5, mikrobiologi:9, parasitologi:6, mikologi:4, imunoserologi:7, sitohisto:5, molekuler:5, mutu:5, manajemen:5, toksikologi:2, kebijakan:2, hitung:5},
+  50:{praanalitik:5, hematologi:6, kimia:6, urinalisis:3, bankdarah:3, mikrobiologi:4, parasitologi:3, mikologi:2, imunoserologi:4, sitohisto:2, molekuler:3, mutu:3, manajemen:2, toksikologi:1, kebijakan:1, hitung:2}
+};
+const MENIT = {100:90, 50:45};
+const SOAL_PER_MATERI = 10, MAKS_SALAH = 20, MAKS_RIWAYAT = 15, BATAS_AMAN = 70;
+const LETTERS = "ABCDE";
+
+/* ===================== UTIL ===================== */
+const $ = s => document.querySelector(s);
+function el(tag, text, cls){ const e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; }
+function rng(seed){ return function(){ seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function shuffle(arr, rand){ const a = arr.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(rand() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const store = {
+  get(k, d){ try { const v = localStorage.getItem("skb1_" + k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem("skb1_" + k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ===================== BANK ===================== */
+const SEMUA = BANK_SKB_A.concat(BANK_SKB_B, typeof BANK_SKB_C !== "undefined" ? BANK_SKB_C : []);
+const POOL = SEMUA.map((x, i) => ({id:"L" + i, tag:x.t, src:x}));
+const BY_ID = {}; POOL.forEach(e => { BY_ID[e.id] = e; });
+const GEN_KEYS = Object.keys(GEN_LAB);
+
+function itemFixed(e, rand){
+  const s = e.src;
+  return {id:e.id, tag:e.tag, q:s.q, p:s.p, opts:shuffle(s.o.map((t, k) => ({t, s:k === 0 ? 1 : 0})), rand)};
+}
+function itemGen(key, rand){
+  const g = GEN_LAB[key].fn(rand);
+  return {id:"G:" + key, tag:"hitung", gen:key, q:g.q, p:g.p, opts:shuffle(g.o.map((t, k) => ({t, s:k === 0 ? 1 : 0})), rand)};
+}
+function pickFixed(list, n){
+  const seen = store.get("seen", {});
+  return shuffle(list, Math.random).sort((a, b) => (seen[a.id] || 0) - (seen[b.id] || 0)).slice(0, n);
+}
+function genKeys(n){ const k = shuffle(GEN_KEYS, Math.random), out = []; for (let i = 0; i < n; i++) out.push(k[i % k.length]); return out; }
+function buildSim(n){
+  const bp = BP[n]; let items = [];
+  Object.keys(bp).forEach(t => {
+    if (t === "hitung") genKeys(bp[t]).forEach(k => items.push(itemGen(k, Math.random)));
+    else pickFixed(POOL.filter(e => e.tag === t), bp[t]).forEach(e => items.push(itemFixed(e, Math.random)));
+  });
+  return shuffle(items, Math.random);
+}
+function buildTopik(t){
+  if (t === "hitung") return genKeys(SOAL_PER_MATERI).map(k => itemGen(k, Math.random));
+  return pickFixed(POOL.filter(e => e.tag === t), SOAL_PER_MATERI).map(e => itemFixed(e, Math.random));
+}
+function buildSalah(){
+  const items = [];
+  Object.keys(store.get("salah", {})).forEach(id => {
+    if (id.indexOf("G:") === 0){ const k = id.slice(2); if (GEN_LAB[k]) items.push(itemGen(k, Math.random)); }
+    else if (BY_ID[id]) items.push(itemFixed(BY_ID[id], Math.random));
+  });
+  return shuffle(items, Math.random).slice(0, MAKS_SALAH);
+}
+
+/* ===================== STATE & VIEW ===================== */
+let S = null;
+function show(v){
+  ["belajar","topik","menu","quiz","hasil","contekan","tips","print"].forEach(x => { $("#v-" + x).hidden = (x !== v); });
+  const tab = (v === "contekan" || v === "tips") ? v : (v === "belajar" || v === "topik") ? "belajar" : "latihan";
+  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === tab)));
+  window.scrollTo(0, 0);
+}
+function start(mode){
+  const belajar = $("#opt-belajar").checked, items = mode.build();
+  if (!items.length) return;
+  if (S && S.timer) clearInterval(S.timer);
+  S = {mode, belajar, items, ans:new Array(items.length).fill(null), flag:new Array(items.length).fill(false), cur:0,
+       startAt:Date.now(), endAt:belajar ? null : Date.now() + mode.menit * 60000, timer:null, done:false};
+  $("#confirm").hidden = true; $("#exit-confirm").hidden = true;
+  show("quiz");
+  const t = $("#q-timer");
+  if (belajar){ t.textContent = "Mode belajar"; t.classList.remove("low"); }
+  else { S.timer = setInterval(tick, 1000); tick(); }
+  renderQ();
+}
+function tick(){
+  if (!S || S.done || !S.endAt) return;
+  const left = Math.max(0, S.endAt - Date.now()), m = Math.floor(left / 60000), s = Math.floor(left % 60000 / 1000), t = $("#q-timer");
+  t.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  t.classList.toggle("low", left < 5 * 60000);
+  if (left <= 0) finish();
+}
+function optNode(o, k, chosen, reveal, asLi){
+  const b = el(asLi ? "li" : "button", "", asLi ? "" : "opt");
+  if (!asLi){ b.type = "button"; b.setAttribute("aria-pressed", chosen === k ? "true" : "false"); }
+  b.append(el("span", LETTERS[k], "let"), el("span", o.t, "txt"));
+  if (asLi && k === chosen) b.append(el("span", "Jawabanmu", "tag"));
+  if (reveal){ if (o.s) b.classList.add("good"); else if (k === chosen) b.classList.add("badopt"); }
+  return b;
+}
+function renderQ(){
+  const it = S.items[S.cur], chosen = S.ans[S.cur], reveal = S.belajar && chosen !== null;
+  $("#q-sec").textContent = TOPIK[it.tag];
+  $("#q-pos").textContent = "Soal " + (S.cur + 1) + " dari " + S.items.length;
+  $("#q-text").textContent = it.q;
+  const box = $("#q-opts"); box.innerHTML = "";
+  it.opts.forEach((o, k) => { const b = optNode(o, k, chosen, reveal, false); if (reveal) b.disabled = true; b.addEventListener("click", () => choose(k)); box.append(b); });
+  const fb = $("#q-fb");
+  if (reveal){
+    fb.innerHTML = ""; const ok = it.opts[chosen].s === 1;
+    fb.append(el("span", ok ? "Benar" : "Salah. Jawaban benar ditandai hijau.", "v " + (ok ? "ok" : "bad")), el("p", it.p));
+    fb.hidden = false;
+  } else fb.hidden = true;
+  $("#b-prev").disabled = S.cur === 0;
+  $("#b-next").disabled = S.cur === S.items.length - 1;
+  $("#b-flag").setAttribute("aria-pressed", String(S.flag[S.cur]));
+  renderGrid();
+}
+function renderGrid(){
+  const g = $("#grid"); g.innerHTML = "";
+  const wrap = el("div", "", "grid"); g.append(wrap);
+  S.items.forEach((it, i) => {
+    const b = el("button", String(i + 1), "gbtn"); b.type = "button";
+    if (S.ans[i] !== null) b.classList.add("done");
+    if (S.flag[i]) b.classList.add("flag");
+    if (i === S.cur) b.classList.add("cur");
+    b.setAttribute("aria-label", "Soal " + (i + 1));
+    b.addEventListener("click", () => go(i));
+    wrap.append(b);
+  });
+}
+function choose(k){ if (!S || S.done) return; if (S.belajar && S.ans[S.cur] !== null) return; S.ans[S.cur] = k; renderQ(); }
+function go(i){
+  if (i < 0 || i >= S.items.length) return;
+  S.cur = i; renderQ();
+  const top = $("#v-quiz").getBoundingClientRect().top + window.scrollY - 8;
+  if (window.scrollY > top) window.scrollTo(0, top);
+}
+function askFinish(){
+  const kosong = S.ans.filter(a => a === null).length, ragu = S.flag.filter(Boolean).length;
+  let msg = "Yakin selesai?";
+  if (kosong) msg = "Masih ada " + kosong + " soal kosong. " + msg;
+  if (ragu) msg += " Ada " + ragu + " soal yang ditandai ragu-ragu.";
+  $("#confirm-text").textContent = msg; $("#confirm").hidden = false;
+  $("#confirm").scrollIntoView({block:"center"});
+}
+
+/* ===================== HASIL ===================== */
+function finish(){
+  if (!S || S.done) return;
+  S.done = true; clearInterval(S.timer);
+  $("#confirm").hidden = true; $("#exit-confirm").hidden = true;
+  const seen = store.get("seen", {}), salah = store.get("salah", {}), per = {};
+  let benar = 0;
+  S.items.forEach((it, i) => {
+    if (!it.gen) seen[it.id] = (seen[it.id] || 0) + 1;
+    const r = per[it.tag] = per[it.tag] || {n:0, b:0}; r.n++;
+    const a = S.ans[i]; if (a === null) return;
+    if (it.opts[a].s){ benar++; r.b++; delete salah[it.id]; } else salah[it.id] = 1;
+  });
+  store.set("seen", seen); store.set("salah", salah);
+  const nilai = Math.round(benar / S.items.length * 100), menit = Math.round((Date.now() - S.startAt) / 60000);
+  const sum = $("#h-sum"); sum.innerHTML = "";
+  sum.append(el("div", S.mode.label + (S.belajar ? " · mode belajar" : "") + " · " + menit + " menit", "muted"));
+  const big = el("div", String(nilai), "big"); big.append(el("small", " / 100")); sum.append(big);
+  sum.append(el("p", "Benar " + benar + " dari " + S.items.length + " soal.", "muted"));
+  sum.append(el("p", nilai >= 80 ? "Mantap, pertahankan dan kejar 90+." : nilai >= BATAS_AMAN ? "Sudah lumayan. Fokuskan latihan ke bidang yang masih merah di rapor." : "Masih perlu latihan. Mulai dari bidang paling rendah di rapor, pakai mode belajar.", "status " + (nilai >= BATAS_AMAN ? "ok" : "bad")));
+  const tb = $("#h-rapor"); tb.innerHTML = "";
+  const hd = el("tr"); ["Bidang","Benar","Nilai"].forEach((x, i) => hd.append(el("th", x, i ? "n" : ""))); const th = el("thead"); th.append(hd); tb.append(th);
+  const body = el("tbody");
+  const rows = Object.keys(TOPIK).filter(t => per[t]).map(t => ({t, n:per[t].n, b:per[t].b, v:Math.round(per[t].b / per[t].n * 100)})).sort((a, b) => a.v - b.v);
+  rows.forEach(r => {
+    const tr = el("tr"), v = el("td", String(r.v), "n");
+    v.style.color = r.v >= BATAS_AMAN ? "var(--ok)" : "var(--bad)";
+    tr.append(el("td", TOPIK[r.t]), el("td", r.b + "/" + r.n, "n"), v); body.append(tr);
+  });
+  tb.append(body);
+  const saran = $("#h-saran"); saran.innerHTML = "";
+  const lemah = rows.filter(r => r.v < BATAS_AMAN).slice(0, 3);
+  if (lemah.length){
+    saran.append(el("p", "Latihan lagi bidang ini (mode belajar disarankan):", "muted"));
+    const w = el("div", "", "chips");
+    lemah.forEach(r => { const b = el("button", TOPIK[r.t], "chipbtn"); b.type = "button"; b.addEventListener("click", () => start(modeTopik(r.t))); w.append(b); });
+    saran.append(w);
+  }
+  if (S.mode.ujian){
+    const rw = store.get("riwayat", []);
+    rw.unshift({w:Date.now(), m:S.mode.label, v:nilai, b:benar, n:S.items.length, bl:S.belajar});
+    store.set("riwayat", rw.slice(0, MAKS_RIWAYAT));
+  }
+  $("#h-wrong").checked = false;
+  $("#h-menu").textContent = (S.mode.topik && T && S.mode.topik === T.t) ? "Kembali ke materi" : "Kembali ke menu";
+  renderReview(); show("hasil");
+}
+function renderReview(){
+  const only = $("#h-wrong").checked, box = $("#h-review"); box.innerHTML = ""; let shown = 0;
+  S.items.forEach((it, i) => {
+    const a = S.ans[i], ok = a !== null && it.opts[a].s === 1;
+    if (only && ok) return; shown++;
+    const card = el("article", "", "rv"), head = el("div", "", "rv-head");
+    head.append(el("span", "No. " + (i + 1), "rv-no"), el("span", TOPIK[it.tag], "chip"), el("span", a === null ? "Kosong" : ok ? "Benar" : "Salah", "rv-v " + (a === null ? "warn" : ok ? "ok" : "bad")));
+    card.append(head, el("p", it.q, "qtext"));
+    const ul = el("ul", "", "rv-opts"); it.opts.forEach((o, k) => ul.append(optNode(o, k, a, true, true)));
+    card.append(ul, el("p", it.p, "pemb")); box.append(card);
+  });
+  if (!shown) box.append(el("p", "Mantap, semua jawaban benar.", "muted"));
+}
+
+/* ===================== MENU ===================== */
+function modeTopik(t){ return {label:"Latihan " + TOPIK[t], ujian:false, menit:9, topik:t, build:() => buildTopik(t)}; }
+const MODES = {
+  S100:{label:"Simulasi SKB 100 soal", ujian:true, menit:MENIT[100], build:() => buildSim(100)},
+  S50:{label:"Simulasi SKB 50 soal", ujian:true, menit:MENIT[50], build:() => buildSim(50)}
+};
+function buildMenu(){
+  const box = $("#modes"); box.innerHTML = "";
+  const kartu = (m, judul, sub, meta, full) => {
+    const b = el("button", "", "mode" + (full ? " full" : "")); b.type = "button";
+    b.append(el("b", judul), el("span", sub), el("em", meta)); b.addEventListener("click", () => start(m)); box.append(b);
+  };
+  kartu(MODES.S100, "Simulasi SKB lengkap", "Semua bidang laboratorium, proporsinya disebar kayak ujian", "100 soal · " + MENIT[100] + " menit", true);
+  kartu(MODES.S50, "Simulasi singkat", "Semua bidang, setengah porsi", "50 soal · " + MENIT[50] + " menit");
+  kartu(modeTopik("hitung"), "Hitungan lab", "Indeks eritrosit, LDL, CV, pengenceran, Westgard", "10 soal · angka acak");
+  kartu({label:"Ulangi soal yang salah", ujian:false, menit:18, build:buildSalah}, "Soal salah", "Ulangi yang pernah salah sampai benar", "maks " + MAKS_SALAH + " soal");
+  const nSalah = Object.keys(store.get("salah", {})).length;
+  $("#salah-info").textContent = nSalah ? nSalah + " soal tercatat salah. Yang dijawab benar akan hilang dari daftar. Sekali latihan maksimal " + MAKS_SALAH + " soal." : "Belum ada. Soal yang kamu jawab salah otomatis masuk ke sini.";
+  $("#b-salah").disabled = !nSalah; $("#b-salah-reset").disabled = !nSalah; $("#salah-confirm").hidden = true;
+  box.lastChild.disabled = !nSalah;
+  const rw = store.get("riwayat", []), tb = $("#riwayat");
+  $("#riwayat-card").hidden = !rw.length; tb.innerHTML = "";
+  if (rw.length){
+    const h = el("tr"); ["Tanggal","Mode","Benar","Nilai"].forEach((x, i) => h.append(el("th", x, i >= 2 ? "n" : ""))); const th = el("thead"); th.append(h); tb.append(th);
+    const body = el("tbody");
+    rw.forEach(r => {
+      const tr = el("tr"), d = new Date(r.w), v = el("td", String(r.v), "n");
+      v.style.color = r.v >= BATAS_AMAN ? "var(--ok)" : "var(--bad)";
+      tr.append(el("td", d.getDate() + "/" + (d.getMonth() + 1) + " " + String(d.getHours()).padStart(2, "0") + "." + String(d.getMinutes()).padStart(2, "0"), "n"), el("td", r.m.replace("Simulasi SKB ", "") + (r.bl ? " (belajar)" : "")), el("td", r.b + "/" + r.n, "n"), v);
+      body.append(tr);
+    });
+    tb.append(body);
+  }
+  $("#bank-info").textContent = "Isi bank soal: " + POOL.length + " soal teori di " + (Object.keys(TOPIK).length - 1) + " bidang, plus " + GEN_KEYS.length + " jenis soal hitungan lab yang angkanya dibuat acak tiap main.";
+}
+
+/* ===================== BELAJAR (mode baca) ===================== */
+const BELAJAR = [
+  {judul:"Spesimen, mutu, dan pelayanan lab", list:["praanalitik","mutu","manajemen","kebijakan"]},
+  {judul:"Pemeriksaan laboratorium", list:["hematologi","kimia","urinalisis","bankdarah","imunoserologi","mikrobiologi","parasitologi","mikologi","sitohisto","molekuler","toksikologi","hitung"]}
+];
+const CONTOH_GEN = 8;
+let T = null;
+function infoTopik(t){ return t === "hitung" ? "Contoh soal + cara hitung, angkanya baru terus" : POOL.filter(e => e.tag === t).length + " tanya-jawab dengan penjelasan"; }
+function renderBelajar(){
+  const box = $("#belajar-list"); box.innerHTML = "";
+  BELAJAR.forEach(g => {
+    box.append(el("h3", g.judul));
+    const grid = el("div", "", "tgrid");
+    g.list.filter(t => TOPIK[t] && (t === "hitung" || POOL.some(e => e.tag === t))).forEach(t => {
+      const b = el("button", "", "tcard"); b.type = "button";
+      b.append(el("b", TOPIK[t]), el("span", infoTopik(t)));
+      b.addEventListener("click", () => bukaTopik(t));
+      grid.append(b);
+    });
+    box.append(grid);
+  });
+}
+function bukaTopik(t){
+  T = {t, items:null};
+  $("#t-judul").textContent = TOPIK[t]; $("#t-info").textContent = infoTopik(t);
+  $("#t-more").hidden = t !== "hitung";
+  renderTopik(true); show("topik");
+}
+function itemsTopik(){
+  if (T.t === "hitung") return Array.from({length:CONTOH_GEN}, (_, i) => itemGen(GEN_KEYS[i % GEN_KEYS.length], Math.random));
+  return POOL.filter(e => e.tag === T.t).map(e => itemFixed(e, () => 0.5));
+}
+function kartuBaca(it, i, tutup){
+  const card = el("article", "", "rv tq");
+  card.append(el("span", "Soal " + (i + 1), "rv-no"), el("p", it.q, "qtext"));
+  const isi = el("div", "", "tq-isi"), box = el("div", "", "ans");
+  box.append(el("b", "Jawaban: "), el("span", it.opts.find(o => o.s === 1).t));
+  isi.append(box, el("p", it.p, "pemb"));
+  if (tutup){
+    isi.hidden = true;
+    const b = el("button", "Lihat jawaban", "btn reveal"); b.type = "button";
+    b.addEventListener("click", () => { isi.hidden = false; b.remove(); });
+    card.append(b);
+  }
+  card.append(isi);
+  return card;
+}
+function renderTopik(baru){
+  if (baru || !T.items) T.items = itemsTopik();
+  const tutup = $("#t-tutup").checked, box = $("#t-list"); box.innerHTML = "";
+  T.items.forEach((it, i) => box.append(kartuBaca(it, i, tutup)));
+}
+function latihTopik(){ start(modeTopik(T.t)); }
+function keMenuAtauTopik(){ const keTopik = S && S.mode.topik && T && S.mode.topik === T.t; S = null; if (keTopik) show("topik"); else { buildMenu(); show("menu"); } }
+
+/* ===================== VERSI CETAK ===================== */
+function buildPrint(){
+  const root = $("#v-print"); root.innerHTML = "";
+  root.append(el("h2", "Bank Soal Latihan SKB Pranata Laboratorium Kesehatan"));
+  root.append(el("p", POOL.length + " soal teori plus contoh soal hitungan. Kunci jawaban dan pembahasan ada di bagian akhir. Di aplikasi, soal hitungan angkanya berubah setiap main.", "muted"));
+  const keys = []; let seed = 11;
+  Object.keys(TOPIK).forEach(t => {
+    const items = t === "hitung" ? GEN_KEYS.flatMap(k => [itemGen(k, rng(seed++)), itemGen(k, rng(seed++))]) : POOL.filter(e => e.tag === t).map(e => itemFixed(e, rng(seed++)));
+    root.append(el("h3", TOPIK[t]));
+    const ol = el("ol", "", "plist"); ol.start = keys.length + 1;
+    items.forEach(it => {
+      const li = el("li", "", "pq"); li.append(el("p", it.q, "qtext"));
+      const ul = el("ul", "", "popts");
+      it.opts.forEach((o, k) => { const x = el("li", ""); x.append(el("span", LETTERS[k] + ". "), el("span", o.t, "txt")); ul.append(x); });
+      li.append(ul); ol.append(li); keys.push(it);
+    });
+    root.append(ol);
+  });
+  root.append(el("h2", "Kunci Jawaban dan Pembahasan", "pagebreak"));
+  keys.forEach((it, i) => { const d = el("div", "", "pkey"); d.append(el("b", (i + 1) + ". " + LETTERS[it.opts.findIndex(o => o.s === 1)]), el("span", it.p)); root.append(d); });
+}
+
+/* ===================== EVENT ===================== */
+$("#opt-belajar").checked = !!store.get("belajar", false);
+$("#opt-belajar").addEventListener("change", e => store.set("belajar", e.target.checked));
+buildMenu();
+renderBelajar();
+$("#t-tutup").checked = !!store.get("tutup", false);
+$("#t-tutup").addEventListener("change", e => { store.set("tutup", e.target.checked); renderTopik(false); });
+$("#t-back").addEventListener("click", () => show("belajar"));
+$("#t-more").addEventListener("click", () => { renderTopik(true); window.scrollTo(0, $("#t-list").getBoundingClientRect().top + window.scrollY - 70); });
+$("#t-latihan").addEventListener("click", latihTopik);
+$("#t-latihan2").addEventListener("click", latihTopik);
+$("#b-ke-belajar").addEventListener("click", () => show("belajar"));
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  if (t.dataset.tab === "contekan" || t.dataset.tab === "tips") show(t.dataset.tab);
+  else if (t.dataset.tab === "belajar") show("belajar");
+  else if (S && !S.done) show("quiz");
+  else if (S && S.done) show("hasil");
+  else { buildMenu(); show("menu"); }
+}));
+$("#b-prev").addEventListener("click", () => go(S.cur - 1));
+$("#b-next").addEventListener("click", () => go(S.cur + 1));
+$("#b-flag").addEventListener("click", () => { S.flag[S.cur] = !S.flag[S.cur]; renderQ(); });
+$("#b-finish").addEventListener("click", askFinish);
+$("#c-yes").addEventListener("click", finish);
+$("#c-no").addEventListener("click", () => { $("#confirm").hidden = true; });
+$("#b-keluar").addEventListener("click", () => { $("#confirm").hidden = true; $("#exit-confirm").hidden = false; window.scrollTo(0, 0); });
+$("#x-no").addEventListener("click", () => { $("#exit-confirm").hidden = true; });
+$("#x-finish").addEventListener("click", () => { $("#exit-confirm").hidden = true; finish(); });
+$("#x-yes").addEventListener("click", () => { $("#exit-confirm").hidden = true; if (S && S.timer) clearInterval(S.timer); keMenuAtauTopik(); });
+$("#h-again").addEventListener("click", () => start(S.mode));
+$("#h-menu").addEventListener("click", keMenuAtauTopik);
+$("#h-wrong").addEventListener("change", renderReview);
+$("#b-salah").addEventListener("click", () => start({label:"Ulangi soal yang salah", ujian:false, menit:18, build:buildSalah}));
+$("#b-salah-reset").addEventListener("click", () => {
+  const c = $("#salah-confirm");
+  if (c.hidden){ c.textContent = "Klik “Kosongkan daftar” sekali lagi untuk menghapus daftar soal salah."; c.hidden = false; return; }
+  store.set("salah", {}); buildMenu();
+});
+document.addEventListener("keydown", e => {
+  if ($("#v-quiz").hidden || !S || S.done || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === "ArrowRight") go(S.cur + 1);
+  else if (e.key === "ArrowLeft") go(S.cur - 1);
+  else { const k = "abcde".indexOf(e.key.toLowerCase()); if (k >= 0 && k < S.items[S.cur].opts.length) choose(k); }
+});
+window.addEventListener("beforeunload", e => { if (S && !S.done){ e.preventDefault(); e.returnValue = ""; } });
+if (location.hash === "#cetak-soal"){ document.body.classList.add("printmode"); buildPrint(); show("print"); }
+else if (location.hash === "#cetak-contekan"){ document.body.classList.add("printmode"); show("contekan"); }
+else if (location.hash === "#cetak-tips"){ document.body.classList.add("printmode"); show("tips"); }
+</script>
+</body>
+</html>

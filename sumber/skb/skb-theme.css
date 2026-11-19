@@ -1,0 +1,6 @@
+
+/* ---- Tema SKB: aksen hijau toska biar beda dari aplikasi SKD ---- */
+:root{--accent:#0f766e;--accent-soft:#ddf2ee;--on-accent:#ffffff}
+@media (prefers-color-scheme: dark){:root{--accent:#34c3ae;--accent-soft:#11302b;--on-accent:#04201b}}
+@media print{:root{--accent:#0f766e;--accent-soft:#ddf2ee}}
+.summary .big small{font-size:16px;color:var(--muted);font-weight:600}

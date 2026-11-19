@@ -1,0 +1,89 @@
+
+/* ---- v2: figural, latihan per materi, riwayat ---- */
+.fig{white-space:pre;font:28px/1.25 "Segoe UI Symbol","Noto Sans Symbols 2","Noto Sans Symbols","Apple Symbols",var(--f-body);margin-top:14px;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;overflow-x:auto;max-width:100%}
+.figo .txt{white-space:pre;font:22px/1.15 "Segoe UI Symbol","Noto Sans Symbols 2","Noto Sans Symbols","Apple Symbols",var(--f-body);padding-top:2px}
+.sub{display:flex;flex-direction:column;gap:10px}
+.btn.sm{min-height:34px;padding:4px 12px;font-size:13px}
+.grouplbl{font:600 12px/1 var(--f-num);letter-spacing:.08em;color:var(--muted);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chipbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:600;font-size:14px;text-align:left}
+.chipbtn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.chipbtn small{color:var(--muted);font-weight:500;margin-left:6px;font-size:12px}
+#riwayat td.status{font-size:13px}
+.popts li{display:flex;gap:4px;align-items:flex-start}
+.popts.figo li .txt{font-size:18px}
+@media (max-width:600px){
+  .modes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mode{padding:12px}
+  .mode b{font-size:20px}
+  .fig{font-size:20px}
+  .figo .txt{font-size:18px}
+}
+@media print{
+  .fig{background:none;font-size:16pt}
+}
+/* ---- Mobile first: target sentuh besar, header ringkas ---- */
+button,a,.toggle{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.brand .home{flex:none;display:block;line-height:0}
+.brand .home img{border-radius:9px}
+.brand .switch{color:var(--muted);text-decoration:none;font-weight:600}
+.brand .switch:hover{color:var(--accent)}
+@media (max-width:600px){
+  body{font-size:16px}
+  .top-in{padding-block:10px;gap:10px}
+  .brand h1{font-size:17px}
+  .brand p{font-size:12px}
+  .tabs{width:100%}
+  .tab{flex:1;padding:9px 6px;font-size:14px;text-align:center}
+  main{padding-block:16px 40px}
+  .card{padding:15px;border-radius:12px}
+  h2{font-size:20px}
+  .qtext{font-size:16.5px}
+  .opt{min-height:54px;padding:13px 12px;font-size:16px}
+  .let{width:30px;height:30px}
+  .qnav .btn{min-height:50px;font-size:15px}
+  .qnav{grid-template-columns:1fr 1fr 1.3fr}
+  .gbtn{height:44px;font-size:14px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(44px,1fr))}
+  .chipbtn{min-height:42px;font-size:14.5px}
+  .btn{min-height:46px}
+  .btn.sm{min-height:38px}
+  .timer{padding:8px 10px}
+  .mode{min-height:96px}
+  table{font-size:13.5px}
+  th,td{padding:7px 8px}
+}
+@media (hover:none){
+  .opt:hover:not(:disabled),.chipbtn:hover,.btn:hover{border-color:var(--line)}
+  .opt[aria-pressed="true"]{border-color:var(--accent)}
+}
+/* ---- Tab Belajar (mode baca) ---- */
+.guide{display:flex;flex-direction:column;gap:6px;border-color:var(--accent);background:var(--accent-soft)}
+.guide ol{margin:2px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:10px}
+.tcard{display:flex;flex-direction:column;gap:4px;text-align:left;padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:76px;font:inherit}
+.tcard b{font-size:16px;line-height:1.3}
+.tcard span{font-size:13px;color:var(--muted);line-height:1.35}
+.tcard:hover{border-color:var(--accent)}
+.btn.big{min-height:52px;font-size:16px;width:100%}
+.tlist{display:flex;flex-direction:column;gap:10px}
+.tq .rv-no{color:var(--muted);font-size:12px}
+.tq-isi{display:flex;flex-direction:column;gap:8px}
+.ans{padding:12px 14px;border-radius:10px;background:var(--ok-soft);border:1px solid var(--ok);line-height:1.5}
+.ans > b{color:var(--ok)}
+.ans.figans span{font:24px/1.15 "Segoe UI Symbol","Noto Sans Symbols 2","Noto Sans Symbols","Apple Symbols",var(--f-body);white-space:pre;display:inline-block;vertical-align:middle}
+.tkp-list{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.tkp-list li{display:flex;gap:10px;align-items:flex-start}
+.tkp-list .pts{flex:none;min-width:54px;line-height:1.5}
+.tkp-list .pts.top{color:var(--ok);font-weight:700}
+.reveal{align-self:flex-start}
+@media (max-width:600px){
+  .tgrid{grid-template-columns:1fr 1fr;gap:8px}
+  .tcard{padding:13px;min-height:84px}
+  .tcard b{font-size:15px}
+  .tab{padding:9px 4px;font-size:13.5px}
+}
+/* Kolom tidak boleh melebar karena tabel di dalamnya */
+.cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols > *, .secgrid > *, .tgrid > *, .langkah > *, .pilih > *{min-width:0}
+@media (max-width:600px){ .cols{grid-template-columns:minmax(0,1fr)} }
